@@ -147,3 +147,43 @@ export const photos = mysqlTable("photos", {
 export type Photo = typeof photos.$inferSelect;
 export type InsertPhoto = typeof photos.$inferInsert;
 
+
+/**
+ * Polls table - Surveys and polls for events
+ */
+export const polls = mysqlTable("polls", {
+  id: int("id").primaryKey(),
+  userId: varchar("userId", { length: 64 }).notNull(),
+  eventId: varchar("eventId", { length: 64 }),
+  title: varchar("title", { length: 255 }).notNull(),
+  description: text("description"),
+  isActive: boolean("isActive").default(true),
+  allowMultiple: boolean("allowMultiple").default(false),
+  createdAt: timestamp("createdAt").defaultNow(),
+  closesAt: timestamp("closesAt"),
+});
+
+export type Poll = typeof polls.$inferSelect;
+export type InsertPoll = typeof polls.$inferInsert;
+
+export const pollOptions = mysqlTable("poll_options", {
+  id: int("id").primaryKey(),
+  pollId: int("pollId").notNull(),
+  text: varchar("text", { length: 255 }).notNull(),
+  order: int("order").default(0),
+});
+
+export type PollOption = typeof pollOptions.$inferSelect;
+export type InsertPollOption = typeof pollOptions.$inferInsert;
+
+export const pollVotes = mysqlTable("poll_votes", {
+  id: int("id").primaryKey(),
+  pollId: int("pollId").notNull(),
+  optionId: int("optionId").notNull(),
+  userId: varchar("userId", { length: 64 }),
+  voterName: varchar("voterName", { length: 255 }),
+  votedAt: timestamp("votedAt").defaultNow(),
+});
+
+export type PollVote = typeof pollVotes.$inferSelect;
+export type InsertPollVote = typeof pollVotes.$inferInsert;

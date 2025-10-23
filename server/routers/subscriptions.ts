@@ -33,7 +33,9 @@ export const subscriptionsRouter = router({
     const tierInfo = SUBSCRIPTION_TIERS[tier];
 
     // Count active events for this user
-    const eventCount = 0; // TODO: Implement event counting
+    const { getUserEvents } = await import("../db");
+    const userEvents = await getUserEvents(user.id);
+    const eventCount = userEvents.length;
 
     return {
       tier,

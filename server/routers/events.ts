@@ -1,7 +1,12 @@
 import { z } from "zod";
+import { TRPCError } from "@trpc/server";
 import { protectedProcedure, router } from "../_core/trpc";
 import * as db from "../db";
 import { randomBytes } from "crypto";
+import { canCreateEvent, getRemainingEventSlots, SUBSCRIPTION_TIERS } from "../stripe";
+import { getDb } from "../db";
+import { users } from "../../drizzle/schema";
+import { eq } from "drizzle-orm";
 
 const eventSchema = z.object({
   title: z.string().min(1, "Title is required"),
@@ -30,6 +35,30 @@ export const eventsRouter = router({
   create: protectedProcedure
     .input(eventSchema)
     .mutation(async ({ ctx, input }) => {
+      // Check subscription limits
+      const database = await getDb();
+      if (!database) throw new Error("Database not available");
+
+      const [user] = await database
+        .select()
+        .from(users)
+        .where(eq(users.id, ctx.user.id))
+        .limit(1);
+
+      if (!user) throw new Error("User not found");
+
+      const tier = user.subscriptionTier || "basic";
+      const userEvents = await db.getUserEvents(ctx.user.id);
+      const activeEventCount = userEvents.length;
+
+      if (!canCreateEvent(tier, activeEventCount)) {
+        const limit = SUBSCRIPTION_TIERS[tier].eventLimit;
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message: `You have reached your event limit (${limit} events). Please upgrade your subscription to create more events.`,
+        });
+      }
+
       const event = {
         id: randomBytes(16).toString("hex"),
         userId: ctx.user.id,

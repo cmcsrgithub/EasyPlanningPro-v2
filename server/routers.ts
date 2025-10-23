@@ -8,6 +8,7 @@ import { rsvpsRouter } from "./routers/rsvps";
 import { membersRouter } from "./routers/members";
 import { subscriptionsRouter } from "./routers/subscriptions";
 import { albumsRouter } from "./routers/albums";
+import { pollsRouter } from "./routers/polls";
 
 export const appRouter = router({
   system: systemRouter,
@@ -29,6 +30,7 @@ export const appRouter = router({
   members: membersRouter,
   subscriptions: subscriptionsRouter,
   albums: albumsRouter,
+  polls: pollsRouter,
 });
 
 export type AppRouter = typeof appRouter;

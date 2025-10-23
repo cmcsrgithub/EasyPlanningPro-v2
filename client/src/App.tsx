@@ -16,6 +16,7 @@ import MemberForm from "./pages/MemberForm";
 import EventDetail from "./pages/EventDetail";
 import VenueDetail from "./pages/VenueDetail";
 import MemberDetail from "./pages/MemberDetail";
+import Settings from "./pages/Settings";
 
 function Router() {
   return (
@@ -35,6 +36,7 @@ function Router() {
       <Route path={"/directory/:id/edit"} component={MemberForm} />
       <Route path={"/directory/:id"} component={MemberDetail} />
       <Route path={"/gallery"} component={Gallery} />
+      <Route path={"/settings"} component={Settings} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

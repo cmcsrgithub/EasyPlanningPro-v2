@@ -13,6 +13,9 @@ import Gallery from "./pages/Gallery";
 import EventForm from "./pages/EventForm";
 import VenueForm from "./pages/VenueForm";
 import MemberForm from "./pages/MemberForm";
+import EventDetail from "./pages/EventDetail";
+import VenueDetail from "./pages/VenueDetail";
+import MemberDetail from "./pages/MemberDetail";
 
 function Router() {
   return (
@@ -20,11 +23,17 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/dashboard"} component={Dashboard} />
       <Route path={"/events"} component={Events} />
-      <Route path={"/events/:id"} component={EventForm} />
+      <Route path={"/events/new"} component={EventForm} />
+      <Route path={"/events/:id/edit"} component={EventForm} />
+      <Route path={"/events/:id"} component={EventDetail} />
       <Route path={"/venues"} component={Venues} />
-      <Route path={"/venues/:id"} component={VenueForm} />
+      <Route path={"/venues/new"} component={VenueForm} />
+      <Route path={"/venues/:id/edit"} component={VenueForm} />
+      <Route path={"/venues/:id"} component={VenueDetail} />
       <Route path={"/directory"} component={Directory} />
-      <Route path={"/directory/:id"} component={MemberForm} />
+      <Route path={"/directory/new"} component={MemberForm} />
+      <Route path={"/directory/:id/edit"} component={MemberForm} />
+      <Route path={"/directory/:id"} component={MemberDetail} />
       <Route path={"/gallery"} component={Gallery} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}

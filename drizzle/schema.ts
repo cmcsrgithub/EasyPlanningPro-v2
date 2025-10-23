@@ -281,3 +281,25 @@ export const tasks = mysqlTable("tasks", {
 
 export type Task = typeof tasks.$inferSelect;
 export type InsertTask = typeof tasks.$inferInsert;
+
+// Financial Reports
+export const expenses = mysqlTable("expenses", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  eventId: varchar("eventId", { length: 64 }).notNull(),
+  category: varchar("category", { length: 100 }).notNull(),
+  description: text("description"),
+  amount: decimal("amount", { precision: 10, scale: 2 }).notNull(),
+  date: timestamp("date").notNull(),
+  receipt: text("receipt"),
+  createdAt: timestamp("createdAt").defaultNow(),
+});
+
+export const budgets = mysqlTable("budgets", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  eventId: varchar("eventId", { length: 64 }).notNull(),
+  category: varchar("category", { length: 100 }).notNull(),
+  allocatedAmount: decimal("allocatedAmount", { precision: 10, scale: 2 }).notNull(),
+  spentAmount: decimal("spentAmount", { precision: 10, scale: 2 }).default("0"),
+  createdAt: timestamp("createdAt").defaultNow(),
+  updatedAt: timestamp("updatedAt").defaultNow(),
+});

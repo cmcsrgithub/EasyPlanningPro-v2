@@ -217,7 +217,7 @@ export default function Team() {
                       </Badge>
                       <div className="text-sm text-muted-foreground flex items-center gap-1">
                         <Calendar className="h-3 w-3" />
-                        {new Date(member.joinedAt).toLocaleDateString()}
+                        {member.joinedAt ? new Date(member.joinedAt).toLocaleDateString() : "N/A"}
                       </div>
                       {member.role !== "owner" && (
                         <Button
@@ -260,7 +260,7 @@ export default function Team() {
                       <div>
                         <p className="font-medium">{invitation.email}</p>
                         <p className="text-sm text-muted-foreground">
-                          Invited {new Date(invitation.createdAt).toLocaleDateString()}
+                          Invited {invitation.createdAt ? new Date(invitation.createdAt).toLocaleDateString() : "N/A"}
                         </p>
                       </div>
                     </div>

@@ -61,7 +61,7 @@ export default function Gallery() {
     });
   };
 
-  const handleDelete = (id: number, name: string) => {
+  const handleDelete = (id: string, name: string) => {
     if (confirm(`Are you sure you want to delete the album "\${name}"? This will also delete all photos in it.`)) {
       deleteMutation.mutate({ id });
     }
@@ -153,11 +153,11 @@ export default function Gallery() {
               <Card key={album.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between">
-                    <span className="truncate">{album.name}</span>
+                    <span className="truncate">{album.title}</span>
                     <Button
                       variant="ghost"
                       size="icon"
-                      onClick={() => handleDelete(album.id, album.name)}
+                      onClick={() => handleDelete(album.id, album.title)}
                     >
                       <Trash2 className="h-4 w-4" />
                     </Button>

@@ -13,7 +13,7 @@ export default function EventDetail() {
   const { user, loading: authLoading } = useAuth();
   const [, params] = useRoute("/events/:id");
   const [, setLocation] = useLocation();
-  const eventId = params?.id ? parseInt(params.id) : 0;
+  const eventId = params?.id || "";
 
   const { data: event, isLoading } = trpc.events.getById.useQuery(
     { id: eventId },
@@ -65,9 +65,9 @@ export default function EventDetail() {
     }
   };
 
-  const attendingCount = rsvps?.filter(r => r.status === "attending").length || 0;
-  const declinedCount = rsvps?.filter(r => r.status === "declined").length || 0;
-  const pendingCount = rsvps?.filter(r => r.status === "pending").length || 0;
+  const attendingCount = rsvps?.filter((r: any) => r.status === "attending").length || 0;
+  const declinedCount = rsvps?.filter((r: any) => r.status === "declined").length || 0;
+  const pendingCount = rsvps?.filter((r: any) => r.status === "pending").length || 0;
 
   return (
     <DashboardLayout>
@@ -79,7 +79,7 @@ export default function EventDetail() {
               <ArrowLeft className="h-5 w-5" />
             </Button>
             <div>
-              <h1 className="text-3xl font-bold tracking-tight">{event.name}</h1>
+              <h1 className="text-3xl font-bold tracking-tight">{event.title}</h1>
               <p className="text-muted-foreground">Event Details</p>
             </div>
           </div>
@@ -121,10 +121,10 @@ export default function EventDetail() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
-                {event.startTime || "TBD"}
+                {event.startDate ? new Date(event.startDate).toLocaleTimeString() : "TBD"}
               </div>
-              {event.endTime && (
-                <p className="text-xs text-muted-foreground">to {event.endTime}</p>
+              {event.endDate && (
+                <p className="text-xs text-muted-foreground">to {new Date(event.endDate).toLocaleTimeString()}</p>
               )}
             </CardContent>
           </Card>
@@ -173,16 +173,7 @@ export default function EventDetail() {
               </CardContent>
             </Card>
 
-            {event.notes && (
-              <Card>
-                <CardHeader>
-                  <CardTitle>Notes</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground whitespace-pre-wrap">{event.notes}</p>
-                </CardContent>
-              </Card>
-            )}
+
           </TabsContent>
 
           <TabsContent value="rsvps" className="space-y-4">
@@ -194,7 +185,7 @@ export default function EventDetail() {
               <CardContent>
                 {rsvps && rsvps.length > 0 ? (
                   <div className="space-y-4">
-                    {rsvps.map((rsvp) => (
+                    {rsvps.map((rsvp: any) => (
                       <div
                         key={rsvp.id}
                         className="flex items-center justify-between p-4 border rounded-lg"

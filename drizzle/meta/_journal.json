@@ -50,6 +50,13 @@
       "when": 1761235652546,
       "tag": "0006_ambitious_wither",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1761245379549,
+      "tag": "0007_tiny_changeling",
+      "breakpoints": true
     }
   ]
 }

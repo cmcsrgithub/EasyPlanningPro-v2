@@ -19,6 +19,20 @@ export const rsvpsRouter = router({
       return await db.getEventRsvps(input.eventId);
     }),
 
+  getByEvent: protectedProcedure
+    .input(z.object({ eventId: z.string() }))
+    .query(async ({ input }) => {
+      return await db.getEventRsvps(input.eventId);
+    }),
+
+  getByMember: protectedProcedure
+    .input(z.object({ memberId: z.string() }))
+    .query(async ({ input }) => {
+      // For now, return empty array - this would need a proper implementation
+      // based on how member RSVPs are tracked
+      return [];
+    }),
+
   create: publicProcedure
     .input(rsvpSchema)
     .mutation(async ({ ctx, input }) => {

@@ -23,27 +23,27 @@ export const albumsRouter = router({
       z.object({
         name: z.string(),
         description: z.string().optional(),
-        eventId: z.number().optional(),
+        eventId: z.string().optional(),
       })
     )
     .mutation(async ({ ctx, input }) => {
       const db = await getDb();
       if (!db) throw new Error("Database not available");
 
-      const id = Date.now();
+      const id = `album_${Date.now()}`;
       await db.insert(albums).values({
         id,
         userId: ctx.user.id,
-        name: input.name,
-        description: input.description,
-        eventId: input.eventId,
+        title: input.name,
+        description: input.description || null,
+        eventId: input.eventId || null,
       });
 
       return { id };
     }),
 
   delete: protectedProcedure
-    .input(z.object({ id: z.number() }))
+    .input(z.object({ id: z.string() }))
     .mutation(async ({ ctx, input }) => {
       const db = await getDb();
       if (!db) throw new Error("Database not available");

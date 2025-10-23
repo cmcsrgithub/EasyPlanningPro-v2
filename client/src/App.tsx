@@ -21,6 +21,7 @@ import Polls from "./pages/Polls";
 import PollForm from "./pages/PollForm";
 import PollDetail from "./pages/PollDetail";
 import Tasks from "./pages/Tasks";
+import Financial from "@/pages/Financial";
 import EventCheckout from "./pages/EventCheckout";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import Team from "./pages/Team";

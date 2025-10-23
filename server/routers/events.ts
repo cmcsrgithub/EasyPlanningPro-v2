@@ -32,6 +32,12 @@ export const eventsRouter = router({
       return await db.getEvent(input.id);
     }),
 
+  getById: protectedProcedure
+    .input(z.object({ id: z.string() }))
+    .query(async ({ input }) => {
+      return await db.getEvent(input.id);
+    }),
+
   create: protectedProcedure
     .input(eventSchema)
     .mutation(async ({ ctx, input }) => {

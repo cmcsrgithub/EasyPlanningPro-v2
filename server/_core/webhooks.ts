@@ -67,8 +67,8 @@ export async function handleStripeWebhook(req: Request, res: Response) {
             subscriptionTier: tier,
             stripeSubscriptionId: subscription.id,
             subscriptionStatus: subscription.status as any,
-            subscriptionEndsAt: subscription.current_period_end
-              ? new Date(subscription.current_period_end * 1000)
+            subscriptionEndsAt: (subscription as any).current_period_end
+              ? new Date((subscription as any).current_period_end * 1000)
               : null,
           })
           .where(eq(users.id, user.id));

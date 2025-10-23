@@ -11,7 +11,7 @@ export default function VenueDetail() {
   const { user, loading: authLoading } = useAuth();
   const [, params] = useRoute("/venues/:id");
   const [, setLocation] = useLocation();
-  const venueId = params?.id ? parseInt(params.id) : 0;
+  const venueId = params?.id || "";
 
   const { data: venue, isLoading } = trpc.venues.getById.useQuery(
     { id: venueId },
@@ -108,29 +108,12 @@ export default function VenueDetail() {
                 </div>
               </div>
 
-              {venue.phone && (
+              {venue.contactPhone && (
                 <div className="flex items-start gap-3">
                   <Phone className="h-5 w-5 text-muted-foreground mt-0.5" />
                   <div>
                     <p className="font-medium">Phone</p>
-                    <p className="text-muted-foreground">{venue.phone}</p>
-                  </div>
-                </div>
-              )}
-
-              {venue.website && (
-                <div className="flex items-start gap-3">
-                  <Globe className="h-5 w-5 text-muted-foreground mt-0.5" />
-                  <div>
-                    <p className="font-medium">Website</p>
-                    <a
-                      href={venue.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:underline"
-                    >
-                      {venue.website}
-                    </a>
+                    <p className="text-muted-foreground">{venue.contactPhone}</p>
                   </div>
                 </div>
               )}
@@ -156,10 +139,10 @@ export default function VenueDetail() {
                 </div>
               )}
 
-              {venue.notes && (
+              {venue.amenities && (
                 <div>
-                  <p className="font-medium mb-2">Notes</p>
-                  <p className="text-muted-foreground whitespace-pre-wrap">{venue.notes}</p>
+                  <p className="font-medium mb-2">Amenities</p>
+                  <p className="text-muted-foreground whitespace-pre-wrap">{venue.amenities}</p>
                 </div>
               )}
             </CardContent>
@@ -184,7 +167,7 @@ export default function VenueDetail() {
                     onClick={() => setLocation(`/events/${event.id}`)}
                   >
                     <div>
-                      <p className="font-medium">{event.name}</p>
+                      <p className="font-medium">{event.title}</p>
                       <p className="text-sm text-muted-foreground">
                         {event.startDate ? new Date(event.startDate).toLocaleDateString() : "Date TBD"}
                       </p>

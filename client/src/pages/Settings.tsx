@@ -38,7 +38,8 @@ export default function Settings() {
         toast.error("Failed to initialize Stripe");
         return;
       }
-      await stripe.redirectToCheckout({ sessionId: data.sessionId });
+      // Use window.location instead of deprecated redirectToCheckout
+      window.location.href = data.url || `/checkout?session_id=${data.sessionId}`;
     },
     onError: (error) => {
       toast.error(`Failed to start checkout: ${error.message}`);

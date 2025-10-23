@@ -25,6 +25,12 @@ export const membersRouter = router({
       return await db.getMember(input.id);
     }),
 
+  getById: protectedProcedure
+    .input(z.object({ id: z.string() }))
+    .query(async ({ input }) => {
+      return await db.getMember(input.id);
+    }),
+
   create: protectedProcedure
     .input(memberSchema)
     .mutation(async ({ ctx, input }) => {

@@ -29,6 +29,12 @@ export const venuesRouter = router({
       return await db.getVenue(input.id);
     }),
 
+  getById: protectedProcedure
+    .input(z.object({ id: z.string() }))
+    .query(async ({ input }) => {
+      return await db.getVenue(input.id);
+    }),
+
   create: protectedProcedure
     .input(venueSchema)
     .mutation(async ({ ctx, input }) => {

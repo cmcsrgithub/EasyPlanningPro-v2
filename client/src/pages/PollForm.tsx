@@ -17,7 +17,7 @@ import { Plus, X, Loader2 } from "lucide-react";
 const pollSchema = z.object({
   title: z.string().min(1, "Title is required"),
   description: z.string().optional(),
-  allowMultiple: z.boolean().default(false),
+  allowMultiple: z.boolean(),
   closesAt: z.string().optional(),
 });
 

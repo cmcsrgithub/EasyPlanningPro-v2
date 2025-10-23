@@ -12,7 +12,7 @@ export default function MemberDetail() {
   const { user, loading: authLoading } = useAuth();
   const [, params] = useRoute("/directory/:id");
   const [, setLocation] = useLocation();
-  const memberId = params?.id ? parseInt(params.id) : 0;
+  const memberId = params?.id || "";
 
   const { data: member, isLoading } = trpc.members.getById.useQuery(
     { id: memberId },
@@ -64,7 +64,7 @@ export default function MemberDetail() {
     }
   };
 
-  const attendedEvents = rsvps?.filter(r => r.status === "attending").length || 0;
+  const attendedEvents = rsvps?.filter((r: any) => r.status === "attending").length || 0;
 
   return (
     <DashboardLayout>
@@ -81,7 +81,7 @@ export default function MemberDetail() {
               </div>
               <div>
                 <h1 className="text-3xl font-bold tracking-tight">
-                  {member.firstName} {member.lastName}
+                  {member.name}
                 </h1>
                 <p className="text-muted-foreground">Member Profile</p>
               </div>
@@ -136,15 +136,10 @@ export default function MemberDetail() {
                 </div>
               )}
 
-              {member.address && (
+              {member.branch && (
                 <div>
-                  <p className="font-medium mb-1">Address</p>
-                  <p className="text-muted-foreground">{member.address}</p>
-                  {member.city && member.state && (
-                    <p className="text-muted-foreground">
-                      {member.city}, {member.state} {member.zipCode}
-                    </p>
-                  )}
+                  <p className="font-medium mb-1">Branch</p>
+                  <p className="text-muted-foreground">{member.branch}</p>
                 </div>
               )}
             </CardContent>
@@ -155,34 +150,34 @@ export default function MemberDetail() {
               <CardTitle>Member Details</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              {member.membershipType && (
-                <div>
-                  <p className="font-medium mb-2">Membership Type</p>
-                  <Badge variant="secondary">{member.membershipType}</Badge>
-                </div>
-              )}
-
               <div>
                 <p className="font-medium">Events Attended</p>
                 <p className="text-2xl font-bold text-primary">{attendedEvents}</p>
               </div>
 
-              {member.joinDate && (
+              {member.createdAt && (
                 <div className="flex items-start gap-3">
                   <Calendar className="h-5 w-5 text-muted-foreground mt-0.5" />
                   <div>
                     <p className="font-medium">Member Since</p>
                     <p className="text-muted-foreground">
-                      {new Date(member.joinDate).toLocaleDateString()}
+                      {new Date(member.createdAt).toLocaleDateString()}
                     </p>
                   </div>
                 </div>
               )}
 
-              {member.notes && (
+              {member.bio && (
                 <div>
-                  <p className="font-medium mb-2">Notes</p>
-                  <p className="text-muted-foreground whitespace-pre-wrap">{member.notes}</p>
+                  <p className="font-medium mb-2">Bio</p>
+                  <p className="text-muted-foreground whitespace-pre-wrap">{member.bio}</p>
+                </div>
+              )}
+
+              {member.interests && (
+                <div>
+                  <p className="font-medium mb-2">Interests</p>
+                  <p className="text-muted-foreground whitespace-pre-wrap">{member.interests}</p>
                 </div>
               )}
             </CardContent>
@@ -200,7 +195,7 @@ export default function MemberDetail() {
           <CardContent>
             {rsvps && rsvps.length > 0 ? (
               <div className="space-y-3">
-                {rsvps.map((rsvp) => (
+                {rsvps.map((rsvp: any) => (
                   <div
                     key={rsvp.id}
                     className="flex items-center justify-between p-4 border rounded-lg"

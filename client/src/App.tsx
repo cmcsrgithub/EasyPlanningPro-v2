@@ -20,6 +20,7 @@ import Settings from "./pages/Settings";
 import Polls from "./pages/Polls";
 import PollForm from "./pages/PollForm";
 import PollDetail from "./pages/PollDetail";
+import Tasks from "./pages/Tasks";
 import EventCheckout from "./pages/EventCheckout";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import Team from "./pages/Team";
@@ -49,6 +50,7 @@ function Router() {
       <Route path={"/polls"} component={Polls} />
       <Route path={"/polls/new"} component={PollForm} />
       <Route path={"/polls/:id"} component={PollDetail} />
+      <Route path="/events/:eventId/tasks" component={Tasks} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

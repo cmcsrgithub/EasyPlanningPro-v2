@@ -87,8 +87,6 @@ export const eventsRouter = router({
       await db.deleteEvent(input.id);
       return { success: true };
     }),
-});
-
 
   // Export event to calendar
   exportToCalendar: protectedProcedure

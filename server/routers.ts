@@ -6,6 +6,8 @@ import { eventsRouter } from "./routers/events";
 import { venuesRouter } from "./routers/venues";
 import { rsvpsRouter } from "./routers/rsvps";
 import { membersRouter } from "./routers/members";
+import { subscriptionsRouter } from "./routers/subscriptions";
+import { albumsRouter } from "./routers/albums";
 
 export const appRouter = router({
   system: systemRouter,
@@ -25,6 +27,8 @@ export const appRouter = router({
   venues: venuesRouter,
   rsvps: rsvpsRouter,
   members: membersRouter,
+  subscriptions: subscriptionsRouter,
+  albums: albumsRouter,
 });
 
 export type AppRouter = typeof appRouter;

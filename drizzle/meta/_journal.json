@@ -15,6 +15,13 @@
       "when": 1761220481160,
       "tag": "0001_outgoing_silver_fox",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1761228036224,
+      "tag": "0002_blushing_shatterstar",
+      "breakpoints": true
     }
   ]
 }

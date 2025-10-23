@@ -17,6 +17,9 @@ import EventDetail from "./pages/EventDetail";
 import VenueDetail from "./pages/VenueDetail";
 import MemberDetail from "./pages/MemberDetail";
 import Settings from "./pages/Settings";
+import Polls from "./pages/Polls";
+import PollForm from "./pages/PollForm";
+import PollDetail from "./pages/PollDetail";
 
 function Router() {
   return (
@@ -37,6 +40,9 @@ function Router() {
       <Route path={"/directory/:id"} component={MemberDetail} />
       <Route path={"/gallery"} component={Gallery} />
       <Route path={"/settings"} component={Settings} />
+      <Route path={"/polls"} component={Polls} />
+      <Route path={"/polls/new"} component={PollForm} />
+      <Route path={"/polls/:id"} component={PollDetail} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

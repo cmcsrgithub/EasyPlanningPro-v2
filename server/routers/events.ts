@@ -89,3 +89,29 @@ export const eventsRouter = router({
     }),
 });
 
+
+  // Export event to calendar
+  exportToCalendar: protectedProcedure
+    .input(z.object({ id: z.string() }))
+    .query(async ({ input }) => {
+      const event = await db.getEvent(input.id);
+      if (!event) {
+        throw new TRPCError({ code: "NOT_FOUND", message: "Event not found" });
+      }
+
+      const { generateICS, generateCalendarLinks } = await import("../calendar");
+      
+      // Generate ICS file content
+      const icsContent = generateICS(event);
+      const icsBase64 = Buffer.from(icsContent).toString("base64");
+      const icsDataUrl = `data:text/calendar;base64,${icsBase64}`;
+
+      // Generate calendar links
+      const links = generateCalendarLinks(event, icsDataUrl);
+
+      return {
+        icsContent,
+        icsDataUrl,
+        links,
+      };
+    }),

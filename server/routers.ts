@@ -10,6 +10,7 @@ import { subscriptionsRouter } from "./routers/subscriptions";
 import { albumsRouter } from "./routers/albums";
 import { pollsRouter } from "./routers/polls";
 import { paymentsRouter } from "./routers/payments";
+import { organizationsRouter } from "./routers/organizations";
 
 export const appRouter = router({
   system: systemRouter,
@@ -33,6 +34,7 @@ export const appRouter = router({
   albums: albumsRouter,
   polls: pollsRouter,
   payments: paymentsRouter,
+  organizations: organizationsRouter,
 });
 
 export type AppRouter = typeof appRouter;

@@ -22,6 +22,7 @@ import PollForm from "./pages/PollForm";
 import PollDetail from "./pages/PollDetail";
 import EventCheckout from "./pages/EventCheckout";
 import PaymentSuccess from "./pages/PaymentSuccess";
+import Team from "./pages/Team";
 
 function Router() {
   return (
@@ -44,6 +45,7 @@ function Router() {
       <Route path={"/directory/:id"} component={MemberDetail} />
       <Route path={"/gallery"} component={Gallery} />
       <Route path={"/settings"} component={Settings} />
+      <Route path={"/team"} component={Team} />
       <Route path={"/polls"} component={Polls} />
       <Route path={"/polls/new"} component={PollForm} />
       <Route path={"/polls/:id"} component={PollDetail} />

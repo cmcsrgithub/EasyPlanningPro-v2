@@ -210,3 +210,53 @@ export const eventPayments = mysqlTable("event_payments", {
 export type EventPayment = typeof eventPayments.$inferSelect;
 export type InsertEventPayment = typeof eventPayments.$inferInsert;
 
+
+/**
+ * Organizations table - For multi-admin accounts
+ */
+export const organizations = mysqlTable("organizations", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  ownerId: varchar("ownerId", { length: 64 }).notNull(),
+  subscriptionTier: mysqlEnum("subscriptionTier", ["basic", "premium", "pro", "business", "enterprise"]).default("basic"),
+  stripeCustomerId: varchar("stripeCustomerId", { length: 255 }),
+  stripeSubscriptionId: varchar("stripeSubscriptionId", { length: 255 }),
+  createdAt: timestamp("createdAt").defaultNow(),
+});
+
+export type Organization = typeof organizations.$inferSelect;
+export type InsertOrganization = typeof organizations.$inferInsert;
+
+/**
+ * Organization members table - Track team members
+ */
+export const organizationMembers = mysqlTable("organization_members", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  organizationId: varchar("organizationId", { length: 64 }).notNull(),
+  userId: varchar("userId", { length: 64 }).notNull(),
+  role: mysqlEnum("role", ["owner", "admin", "member"]).default("member"),
+  permissions: text("permissions"), // JSON array
+  invitedBy: varchar("invitedBy", { length: 64 }),
+  joinedAt: timestamp("joinedAt").defaultNow(),
+});
+
+export type OrganizationMember = typeof organizationMembers.$inferSelect;
+export type InsertOrganizationMember = typeof organizationMembers.$inferInsert;
+
+/**
+ * Team invitations table
+ */
+export const teamInvitations = mysqlTable("team_invitations", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  organizationId: varchar("organizationId", { length: 64 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  role: mysqlEnum("role", ["admin", "member"]).default("member"),
+  invitedBy: varchar("invitedBy", { length: 64 }).notNull(),
+  status: mysqlEnum("status", ["pending", "accepted", "expired"]).default("pending"),
+  token: varchar("token", { length: 255 }).notNull(),
+  expiresAt: timestamp("expiresAt").notNull(),
+  createdAt: timestamp("createdAt").defaultNow(),
+});
+
+export type TeamInvitation = typeof teamInvitations.$inferSelect;
+export type InsertTeamInvitation = typeof teamInvitations.$inferInsert;

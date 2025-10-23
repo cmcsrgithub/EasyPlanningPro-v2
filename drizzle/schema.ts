@@ -260,3 +260,24 @@ export const teamInvitations = mysqlTable("team_invitations", {
 
 export type TeamInvitation = typeof teamInvitations.$inferSelect;
 export type InsertTeamInvitation = typeof teamInvitations.$inferInsert;
+
+/**
+ * Tasks table - Advanced task management for Pro tier
+ */
+export const tasks = mysqlTable("tasks", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  eventId: varchar("eventId", { length: 64 }).notNull(),
+  userId: varchar("userId", { length: 64 }).notNull(),
+  title: varchar("title", { length: 255 }).notNull(),
+  description: text("description"),
+  status: mysqlEnum("status", ["todo", "in_progress", "done"]).default("todo").notNull(),
+  priority: mysqlEnum("priority", ["low", "medium", "high"]).default("medium").notNull(),
+  assignedTo: varchar("assignedTo", { length: 64 }),
+  dueDate: timestamp("dueDate"),
+  completedAt: timestamp("completedAt"),
+  createdAt: timestamp("createdAt").defaultNow(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow(),
+});
+
+export type Task = typeof tasks.$inferSelect;
+export type InsertTask = typeof tasks.$inferInsert;

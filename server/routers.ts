@@ -11,6 +11,7 @@ import { albumsRouter } from "./routers/albums";
 import { pollsRouter } from "./routers/polls";
 import { paymentsRouter } from "./routers/payments";
 import { organizationsRouter } from "./routers/organizations";
+import { tasksRouter } from "./routers/tasks";
 
 export const appRouter = router({
   system: systemRouter,
@@ -35,6 +36,7 @@ export const appRouter = router({
   polls: pollsRouter,
   payments: paymentsRouter,
   organizations: organizationsRouter,
+  tasks: tasksRouter,
 });
 
 export type AppRouter = typeof appRouter;

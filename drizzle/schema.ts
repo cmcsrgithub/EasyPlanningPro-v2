@@ -187,3 +187,49 @@ export const pollVotes = mysqlTable("poll_votes", {
 
 export type PollVote = typeof pollVotes.$inferSelect;
 export type InsertPollVote = typeof pollVotes.$inferInsert;
+
+/**
+ * Event payments table - Track ticket sales and registration fees
+ */
+export const eventPayments = mysqlTable("event_payments", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  eventId: varchar("eventId", { length: 64 }).notNull(),
+  userId: varchar("userId", { length: 64 }),
+  attendeeName: varchar("attendeeName", { length: 255 }),
+  attendeeEmail: varchar("attendeeEmail", { length: 320 }),
+  amount: int("amount").notNull(), // Amount in cents
+  currency: varchar("currency", { length: 3 }).default("usd"),
+  stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 255 }),
+  status: mysqlEnum("status", ["pending", "succeeded", "failed", "refunded"]).default("pending"),
+  ticketType: varchar("ticketType", { length: 64 }),
+  quantity: int("quantity").default(1),
+  createdAt: timestamp("createdAt").defaultNow(),
+  paidAt: timestamp("paidAt"),
+});
+
+export type EventPayment = typeof eventPayments.$inferSelect;
+export type InsertEventPayment = typeof eventPayments.$inferInsert;
+
+
+/**
+ * Event payments table - Track ticket sales and registration fees
+ */
+export const eventPayments = mysqlTable("event_payments", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  eventId: varchar("eventId", { length: 64 }).notNull(),
+  userId: varchar("userId", { length: 64 }),
+  attendeeName: varchar("attendeeName", { length: 255 }),
+  attendeeEmail: varchar("attendeeEmail", { length: 320 }),
+  amount: int("amount").notNull(), // Amount in cents
+  currency: varchar("currency", { length: 3 }).default("usd"),
+  stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 255 }),
+  status: mysqlEnum("status", ["pending", "succeeded", "failed", "refunded"]).default("pending"),
+  ticketType: varchar("ticketType", { length: 64 }),
+  quantity: int("quantity").default(1),
+  createdAt: timestamp("createdAt").defaultNow(),
+  paidAt: timestamp("paidAt"),
+});
+
+export type EventPayment = typeof eventPayments.$inferSelect;
+export type InsertEventPayment = typeof eventPayments.$inferInsert;
+

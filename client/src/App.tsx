@@ -7,6 +7,12 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Events from "./pages/Events";
+import Venues from "./pages/Venues";
+import Directory from "./pages/Directory";
+import Gallery from "./pages/Gallery";
+import EventForm from "./pages/EventForm";
+import VenueForm from "./pages/VenueForm";
+import MemberForm from "./pages/MemberForm";
 
 function Router() {
   return (
@@ -14,6 +20,12 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/dashboard"} component={Dashboard} />
       <Route path={"/events"} component={Events} />
+      <Route path={"/events/:id"} component={EventForm} />
+      <Route path={"/venues"} component={Venues} />
+      <Route path={"/venues/:id"} component={VenueForm} />
+      <Route path={"/directory"} component={Directory} />
+      <Route path={"/directory/:id"} component={MemberForm} />
+      <Route path={"/gallery"} component={Gallery} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

@@ -20,6 +20,8 @@ import Settings from "./pages/Settings";
 import Polls from "./pages/Polls";
 import PollForm from "./pages/PollForm";
 import PollDetail from "./pages/PollDetail";
+import EventCheckout from "./pages/EventCheckout";
+import PaymentSuccess from "./pages/PaymentSuccess";
 
 function Router() {
   return (
@@ -29,6 +31,8 @@ function Router() {
       <Route path={"/events"} component={Events} />
       <Route path={"/events/new"} component={EventForm} />
       <Route path={"/events/:id/edit"} component={EventForm} />
+      <Route path={"/events/:id/checkout"} component={EventCheckout} />
+      <Route path={"/events/:id/payment-success"} component={PaymentSuccess} />
       <Route path={"/events/:id"} component={EventDetail} />
       <Route path={"/venues"} component={Venues} />
       <Route path={"/venues/new"} component={VenueForm} />

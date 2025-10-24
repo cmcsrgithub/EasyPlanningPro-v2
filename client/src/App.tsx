@@ -55,6 +55,43 @@ import TermsOfService from "./pages/TermsOfService";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
+import HelpCenter from "./pages/HelpCenter";
+import ForumTopic from "./pages/ForumTopic";
+import TicketDetail from "./pages/TicketDetail";
+import Volunteers from "./pages/Volunteers";
+import TemplateDetail from "./pages/TemplateDetail";
+import SponsorDetail from "./pages/SponsorDetail";
+import DonationDetail from "./pages/DonationDetail";
+import PackageForm from "./pages/PackageForm";
+import TemplateForm from "./pages/TemplateForm";
+import AlbumDetail from "./pages/AlbumDetail";
+import PhotoDetail from "./pages/PhotoDetail";
+import MessageChannel from "./pages/MessageChannel";
+import UserProfile from "./pages/UserProfile";
+import AccountSettings from "./pages/AccountSettings";
+import SecuritySettings from "./pages/SecuritySettings";
+import NotificationSettings from "./pages/NotificationSettings";
+import BillingSettings from "./pages/BillingSettings";
+import IntegrationSettings from "./pages/IntegrationSettings";
+import APIDocumentation from "./pages/APIDocumentation";
+import UserGuide from "./pages/UserGuide";
+import VideoTutorials from "./pages/VideoTutorials";
+import Changelog from "./pages/Changelog";
+import Roadmap from "./pages/Roadmap";
+import Features from "./pages/Features";
+import Testimonials from "./pages/Testimonials";
+import CaseStudies from "./pages/CaseStudies";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
+import Resources from "./pages/Resources";
+import Downloads from "./pages/Downloads";
+import Integrations from "./pages/Integrations";
+import Pricing from "./pages/Pricing";
+import Compare from "./pages/Compare";
+import Enterprise from "./pages/Enterprise";
+import Partners from "./pages/Partners";
+import Affiliates from "./pages/Affiliates";
+import Careers from "./pages/Careers";
 
 function Router() {
   return (
@@ -114,6 +151,43 @@ function Router() {
       <Route path="/events/:eventId/fundraising" component={Fundraising} />
       <Route path="/events/:eventId/forms" component={CustomForms} />
       <Route path="/events/:eventId/analytics" component={Analytics} />
+      <Route path="/help" component={HelpCenter} />
+      <Route path="/forum/:id" component={ForumTopic} />
+      <Route path="/tickets/:id" component={TicketDetail} />
+      <Route path="/volunteers" component={Volunteers} />
+      <Route path="/templates/:id" component={TemplateDetail} />
+      <Route path="/templates/new" component={TemplateForm} />
+      <Route path="/sponsors/:id" component={SponsorDetail} />
+      <Route path="/donations/:id" component={DonationDetail} />
+      <Route path="/packages/new" component={PackageForm} />
+      <Route path="/albums/:id" component={AlbumDetail} />
+      <Route path="/photos/:id" component={PhotoDetail} />
+      <Route path="/messages/:id" component={MessageChannel} />
+      <Route path="/user/:id" component={UserProfile} />
+      <Route path="/account" component={AccountSettings} />
+      <Route path="/security" component={SecuritySettings} />
+      <Route path="/notifications" component={NotificationSettings} />
+      <Route path="/billing" component={BillingSettings} />
+      <Route path="/integrations-settings" component={IntegrationSettings} />
+      <Route path="/api-docs" component={APIDocumentation} />
+      <Route path="/guide" component={UserGuide} />
+      <Route path="/tutorials" component={VideoTutorials} />
+      <Route path="/changelog" component={Changelog} />
+      <Route path="/roadmap" component={Roadmap} />
+      <Route path="/features" component={Features} />
+      <Route path="/testimonials" component={Testimonials} />
+      <Route path="/case-studies" component={CaseStudies} />
+      <Route path="/blog" component={Blog} />
+      <Route path="/blog/:id" component={BlogPost} />
+      <Route path="/resources" component={Resources} />
+      <Route path="/downloads" component={Downloads} />
+      <Route path="/integrations" component={Integrations} />
+      <Route path="/pricing" component={Pricing} />
+      <Route path="/compare" component={Compare} />
+      <Route path="/enterprise" component={Enterprise} />
+      <Route path="/partners" component={Partners} />
+      <Route path="/affiliates" component={Affiliates} />
+      <Route path="/careers" component={Careers} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

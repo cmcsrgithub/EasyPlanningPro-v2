@@ -1,4 +1,4 @@
-import { boolean, decimal, int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { boolean, decimal, int, json, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -558,4 +558,51 @@ export const activityRegistrations = mysqlTable("activityRegistrations", {
 
 export type ActivityRegistration = typeof activityRegistrations.$inferSelect;
 export type InsertActivityRegistration = typeof activityRegistrations.$inferInsert;
+
+
+
+
+/**
+ * Event Templates - Reusable event configurations
+ */
+export const eventTemplates = mysqlTable("eventTemplates", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  description: text("description"),
+  category: varchar("category", { length: 100 }),
+  eventType: varchar("eventType", { length: 100 }),
+  defaultDuration: int("defaultDuration"), // in days
+  defaultMaxAttendees: int("defaultMaxAttendees"),
+  defaultIsPublic: boolean("defaultIsPublic").default(true),
+  templateData: json("templateData"), // Store event configuration as JSON
+  imageUrl: text("imageUrl"),
+  isPublic: boolean("isPublic").default(false), // Can others use this template?
+  createdBy: varchar("createdBy", { length: 64 }),
+  usageCount: int("usageCount").default(0),
+  createdAt: timestamp("createdAt").defaultNow(),
+  updatedAt: timestamp("updatedAt").defaultNow(),
+});
+
+export type EventTemplate = typeof eventTemplates.$inferSelect;
+export type InsertEventTemplate = typeof eventTemplates.$inferInsert;
+
+/**
+ * Event Waitlist - Manage waiting lists for full events
+ */
+export const eventWaitlist = mysqlTable("eventWaitlist", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  eventId: varchar("eventId", { length: 64 }).notNull(),
+  userId: varchar("userId", { length: 64 }).notNull(),
+  position: int("position"), // Position in waitlist
+  status: mysqlEnum("status", ["waiting", "offered", "accepted", "declined", "expired"]).default("waiting"),
+  notes: text("notes"),
+  joinedAt: timestamp("joinedAt").defaultNow(),
+  offeredAt: timestamp("offeredAt"),
+  respondedAt: timestamp("respondedAt"),
+  expiresAt: timestamp("expiresAt"),
+  createdAt: timestamp("createdAt").defaultNow(),
+});
+
+export type EventWaitlist = typeof eventWaitlist.$inferSelect;
+export type InsertEventWaitlist = typeof eventWaitlist.$inferInsert;
 

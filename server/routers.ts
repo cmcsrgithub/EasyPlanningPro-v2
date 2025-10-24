@@ -20,6 +20,8 @@ import { customFormsRouter } from "./routers/customForms";
 import { sponsorsRouter } from "./routers/sponsors";
 import { donationsRouter } from "./routers/donations";
 import { activitiesRouter } from "./routers/activities";
+import { templatesRouter } from "./routers/templates";
+import { waitlistRouter } from "./routers/waitlist";
 
 export const appRouter = router({
   system: systemRouter,
@@ -53,6 +55,8 @@ export const appRouter = router({
   sponsors: sponsorsRouter,
   donations: donationsRouter,
   activities: activitiesRouter,
+  templates: templatesRouter,
+  waitlist: waitlistRouter,
 });
 
 export type AppRouter = typeof appRouter;

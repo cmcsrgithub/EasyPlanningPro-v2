@@ -39,6 +39,9 @@ import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import Profile from "./pages/Profile";
 import Activities from "./pages/Activities";
+import ActivityDetail from "./pages/ActivityDetail";
+import ActivityForm from "./pages/ActivityForm";
+import MyRegistrations from "./pages/MyRegistrations";
 
 function Router() {
   return (
@@ -67,6 +70,10 @@ function Router() {
       <Route path={"/reset-password"} component={ResetPassword} />
       <Route path={"/profile"} component={Profile} />
       <Route path={"/activities"} component={Activities} />
+      <Route path={"/activities/new"} component={ActivityForm} />
+      <Route path={"/activities/:id"} component={ActivityDetail} />
+      <Route path={"/activities/:id/edit"} component={ActivityForm} />
+      <Route path={"/my-registrations"} component={MyRegistrations} />
       <Route path={"/team"} component={Team} />
       <Route path={"/polls"} component={Polls} />
       <Route path={"/polls/new"} component={PollForm} />

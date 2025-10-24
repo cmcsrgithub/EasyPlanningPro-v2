@@ -50,6 +50,11 @@ import Forum from "./pages/Forum";
 import SupportTickets from "./pages/SupportTickets";
 import AdminDashboard from "./pages/AdminDashboard";
 import EmailMarketing from "./pages/EmailMarketing";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import FAQ from "./pages/FAQ";
 
 function Router() {
   return (
@@ -90,6 +95,11 @@ function Router() {
       <Route path={"/tickets"} component={SupportTickets} />
       <Route path={"/admin"} component={AdminDashboard} />
       <Route path={"/email-marketing"} component={EmailMarketing} />
+      <Route path={"/privacy"} component={PrivacyPolicy} />
+      <Route path={"/terms"} component={TermsOfService} />
+      <Route path={"/about"} component={About} />
+      <Route path={"/contact"} component={Contact} />
+      <Route path={"/faq"} component={FAQ} />
       <Route path={"/team"} component={Team} />
       <Route path={"/polls"} component={Polls} />
       <Route path={"/polls/new"} component={PollForm} />

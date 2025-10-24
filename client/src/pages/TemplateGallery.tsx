@@ -195,10 +195,23 @@ export default function TemplateGallery() {
                     <p className="text-sm text-muted-foreground line-clamp-3">
                       {template.description}
                     </p>
-                    <Button className="w-full mt-4" size="sm">
-                      <Sparkles className="mr-2 h-4 w-4" />
-                      Use Template
-                    </Button>
+                    <div className="flex gap-2 mt-4">
+                      <Button className="flex-1" size="sm">
+                        <Sparkles className="mr-2 h-4 w-4" />
+                        Use
+                      </Button>
+                      <Button
+                        className="flex-1"
+                        size="sm"
+                        variant="outline"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          window.location.href = `/templates/customize/${template.id}`;
+                        }}
+                      >
+                        Customize
+                      </Button>
+                    </div>
                   </CardContent>
                 </Card>
               </Link>

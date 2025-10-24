@@ -45,6 +45,8 @@ import MyRegistrations from "./pages/MyRegistrations";
 import Templates from "./pages/Templates";
 import TemplateGallery from "./pages/TemplateGallery";
 import TemplateViewer from "./pages/TemplateViewer";
+import TemplateCustomize from "./pages/TemplateCustomize";
+import SharedTemplate from "./pages/SharedTemplate";
 import WaitlistManagement from "./pages/WaitlistManagement";
 import CalendarView from "./pages/CalendarView";
 import TravelPlanner from "./pages/TravelPlanner";
@@ -129,6 +131,8 @@ function Router() {
       <Route path={"/my-registrations"} component={MyRegistrations} />
       <Route path={"/templates/gallery"} component={TemplateGallery} />
       <Route path={"/templates/gallery/:id"} component={TemplateViewer} />
+      <Route path={"/templates/customize/:templateId"} component={TemplateCustomize} />
+      <Route path={"/shared/:slug"} component={SharedTemplate} />
       <Route path={"/templates"} component={Templates} />
       <Route path={"/events/:eventId/waitlist"} component={WaitlistManagement} />
       <Route path={"/calendar"} component={CalendarView} />

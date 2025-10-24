@@ -861,8 +861,8 @@ export const checklistItems = mysqlTable("checklist_items", {
   description: text("description"),
   dueDate: timestamp("due_date"),
   assignedTo: text("assigned_to"),
-  priority: varchar("priority", { length: 64 }).default("medium"), // low, medium, high, urgent
-  status: varchar("status", { length: 64 }).default("pending"), // pending, in_progress, completed, cancelled
+  priority: varchar("priority", { length: 20 }).default("medium"), // low, medium, high, urgent
+  status: varchar("status", { length: 20 }).default("pending"), // pending, in_progress, completed, cancelled
   completedAt: timestamp("completed_at"),
   completedBy: text("completed_by"),
   order: int("order").default(0),
@@ -873,7 +873,7 @@ export const userSubscriptions = mysqlTable("user_subscriptions", {
   id: varchar("id", { length: 64 }).primaryKey(),
   userId: varchar("user_id", { length: 64 }).notNull(),
   plan: varchar("plan", { length: 64 }).notNull(), // basic, premium, pro, business
-  status: text("status").notNull().default("active"), // active, cancelled, expired, past_due
+  status: varchar("status", { length: 20 }).notNull().default("active"), // active, cancelled, expired, past_due
   stripeSubscriptionId: varchar("stripe_subscription_id", { length: 64 }),
   stripeCustomerId: varchar("stripe_customer_id", { length: 64 }),
   currentPeriodStart: timestamp("current_period_start"),
@@ -885,3 +885,39 @@ export const userSubscriptions = mysqlTable("user_subscriptions", {
 
 
 // User Subscriptions
+
+
+/**
+ * Template Customizations table - Store template customization settings
+ */
+export const templateCustomizations = mysqlTable("template_customizations", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  eventId: varchar("eventId", { length: 64 }),
+  userId: varchar("userId", { length: 64 }).notNull(),
+  
+  // Template info
+  templateId: varchar("templateId", { length: 64 }).notNull(),
+  
+  // Free user customizations
+  colorScheme: varchar("colorScheme", { length: 64 }).default("default"), // predefined scheme name
+  fontFamily: varchar("fontFamily", { length: 64 }).default("inter"), // inter, roboto, poppins, playfair
+  
+  // Paid user customizations
+  customBackgroundColor: varchar("customBackgroundColor", { length: 16 }), // hex color
+  customFontColor: varchar("customFontColor", { length: 16 }), // hex color
+  customAccentColor: varchar("customAccentColor", { length: 16 }), // hex color
+  
+  // Shareable link
+  shareableSlug: varchar("shareableSlug", { length: 128 }),
+  isPubliclyAccessible: boolean("isPubliclyAccessible").default(true),
+  
+  // Additional settings
+  customSettings: json("customSettings"), // for future extensibility
+  
+  createdAt: timestamp("createdAt").defaultNow(),
+  updatedAt: timestamp("updatedAt").defaultNow(),
+});
+
+export type TemplateCustomization = typeof templateCustomizations.$inferSelect;
+export type NewTemplateCustomization = typeof templateCustomizations.$inferInsert;
+

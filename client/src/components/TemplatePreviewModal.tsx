@@ -104,7 +104,7 @@ export default function TemplatePreviewModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-6xl max-h-[90vh] overflow-hidden p-0">
+      <DialogContent className="max-w-[95vw] w-[95vw] max-h-[90vh] overflow-hidden p-0">
         <DialogHeader className="p-6 pb-4 border-b">
           <DialogTitle className="text-2xl">{templateName} Template Preview</DialogTitle>
         </DialogHeader>
@@ -118,7 +118,7 @@ export default function TemplatePreviewModal({
               </div>
             </div>
           ) : (
-            <div className="scale-90 origin-top">
+            <div className="w-full">
               <Suspense
                 fallback={
                   <div className="flex items-center justify-center py-20">

@@ -46,6 +46,8 @@ import Templates from "./pages/Templates";
 import WaitlistManagement from "./pages/WaitlistManagement";
 import CalendarView from "./pages/CalendarView";
 import TravelPlanner from "./pages/TravelPlanner";
+import Forum from "./pages/Forum";
+import SupportTickets from "./pages/SupportTickets";
 
 function Router() {
   return (
@@ -82,6 +84,8 @@ function Router() {
       <Route path={"/events/:eventId/waitlist"} component={WaitlistManagement} />
       <Route path={"/calendar"} component={CalendarView} />
       <Route path={"/travel"} component={TravelPlanner} />
+      <Route path={"/forum"} component={Forum} />
+      <Route path={"/tickets"} component={SupportTickets} />
       <Route path={"/team"} component={Team} />
       <Route path={"/polls"} component={Polls} />
       <Route path={"/polls/new"} component={PollForm} />

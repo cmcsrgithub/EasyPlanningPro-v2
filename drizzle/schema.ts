@@ -657,3 +657,78 @@ export const accommodations = mysqlTable("accommodations", {
 export type Accommodation = typeof accommodations.$inferSelect;
 export type InsertAccommodation = typeof accommodations.$inferInsert;
 
+
+
+
+/**
+ * Forum Topics - Discussion forum for events
+ */
+export const forumTopics = mysqlTable("forumTopics", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  eventId: varchar("eventId", { length: 64 }),
+  title: varchar("title", { length: 255 }).notNull(),
+  content: text("content").notNull(),
+  authorId: varchar("authorId", { length: 64 }).notNull(),
+  isPinned: boolean("isPinned").default(false),
+  isLocked: boolean("isLocked").default(false),
+  viewCount: int("viewCount").default(0),
+  replyCount: int("replyCount").default(0),
+  lastReplyAt: timestamp("lastReplyAt"),
+  createdAt: timestamp("createdAt").defaultNow(),
+  updatedAt: timestamp("updatedAt").defaultNow(),
+});
+
+export type ForumTopic = typeof forumTopics.$inferSelect;
+export type InsertForumTopic = typeof forumTopics.$inferInsert;
+
+/**
+ * Forum Replies - Replies to forum topics
+ */
+export const forumReplies = mysqlTable("forumReplies", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  topicId: varchar("topicId", { length: 64 }).notNull(),
+  content: text("content").notNull(),
+  authorId: varchar("authorId", { length: 64 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow(),
+  updatedAt: timestamp("updatedAt").defaultNow(),
+});
+
+export type ForumReply = typeof forumReplies.$inferSelect;
+export type InsertForumReply = typeof forumReplies.$inferInsert;
+
+/**
+ * Support Tickets - Help desk ticketing system
+ */
+export const supportTickets = mysqlTable("supportTickets", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  eventId: varchar("eventId", { length: 64 }),
+  subject: varchar("subject", { length: 255 }).notNull(),
+  description: text("description").notNull(),
+  category: varchar("category", { length: 100 }),
+  priority: mysqlEnum("priority", ["low", "medium", "high", "urgent"]).default("medium"),
+  status: mysqlEnum("status", ["open", "in_progress", "resolved", "closed"]).default("open"),
+  submittedBy: varchar("submittedBy", { length: 64 }).notNull(),
+  assignedTo: varchar("assignedTo", { length: 64 }),
+  createdAt: timestamp("createdAt").defaultNow(),
+  updatedAt: timestamp("updatedAt").defaultNow(),
+  resolvedAt: timestamp("resolvedAt"),
+});
+
+export type SupportTicket = typeof supportTickets.$inferSelect;
+export type InsertSupportTicket = typeof supportTickets.$inferInsert;
+
+/**
+ * Ticket Comments - Comments on support tickets
+ */
+export const ticketComments = mysqlTable("ticketComments", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  ticketId: varchar("ticketId", { length: 64 }).notNull(),
+  content: text("content").notNull(),
+  authorId: varchar("authorId", { length: 64 }).notNull(),
+  isInternal: boolean("isInternal").default(false), // Staff-only notes
+  createdAt: timestamp("createdAt").defaultNow(),
+});
+
+export type TicketComment = typeof ticketComments.$inferSelect;
+export type InsertTicketComment = typeof ticketComments.$inferInsert;
+

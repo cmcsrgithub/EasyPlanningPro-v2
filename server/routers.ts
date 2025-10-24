@@ -23,6 +23,8 @@ import { activitiesRouter } from "./routers/activities";
 import { templatesRouter } from "./routers/templates";
 import { waitlistRouter } from "./routers/waitlist";
 import { travelRouter } from "./routers/travel";
+import { forumRouter } from "./routers/forum";
+import { ticketsRouter } from "./routers/tickets";
 
 export const appRouter = router({
   system: systemRouter,
@@ -59,6 +61,8 @@ export const appRouter = router({
   templates: templatesRouter,
   waitlist: waitlistRouter,
   travel: travelRouter,
+  forum: forumRouter,
+  tickets: ticketsRouter,
 });
 
 export type AppRouter = typeof appRouter;

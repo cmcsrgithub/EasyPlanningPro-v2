@@ -266,9 +266,9 @@ function DashboardLayoutContent({
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">
                 <DropdownMenuItem
-                  onClick={() => {
-                    logout();
-                    setLocation('/');
+                  onClick={async () => {
+                    await logout();
+                    window.location.href = '/';
                   }}
                   className="cursor-pointer text-destructive focus:text-destructive"
                 >

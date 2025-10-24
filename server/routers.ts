@@ -16,6 +16,9 @@ import { financialRouter } from "./routers/financial";
 import { messagingRouter } from "./routers/messaging";
 import { packagesRouter } from "./routers/packages";
 import { brandingRouter } from "./routers/branding";
+import { customFormsRouter } from "./routers/customForms";
+import { sponsorsRouter } from "./routers/sponsors";
+import { donationsRouter } from "./routers/donations";
 
 export const appRouter = router({
   system: systemRouter,
@@ -45,6 +48,9 @@ export const appRouter = router({
   messaging: messagingRouter,
   packages: packagesRouter,
   branding: brandingRouter,
+  customForms: customFormsRouter,
+  sponsors: sponsorsRouter,
+  donations: donationsRouter,
 });
 
 export type AppRouter = typeof appRouter;

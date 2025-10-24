@@ -418,3 +418,96 @@ export const brandingSettings = mysqlTable("brandingSettings", {
 export type BrandingSettings = typeof brandingSettings.$inferSelect;
 export type InsertBrandingSettings = typeof brandingSettings.$inferInsert;
 
+
+
+
+/**
+ * Custom Forms - Customizable registration forms for events (Business tier)
+ */
+export const customForms = mysqlTable("customForms", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  eventId: varchar("eventId", { length: 64 }).notNull(),
+  title: varchar("title", { length: 255 }).notNull(),
+  description: text("description"),
+  isActive: boolean("isActive").default(true),
+  createdAt: timestamp("createdAt").defaultNow(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow(),
+});
+
+export type CustomForm = typeof customForms.$inferSelect;
+export type InsertCustomForm = typeof customForms.$inferInsert;
+
+/**
+ * Form Fields - Individual fields in custom forms
+ */
+export const formFields = mysqlTable("formFields", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  formId: varchar("formId", { length: 64 }).notNull(),
+  label: varchar("label", { length: 255 }).notNull(),
+  fieldType: mysqlEnum("fieldType", ["text", "email", "number", "textarea", "select", "checkbox", "radio", "date"]).notNull(),
+  options: text("options"), // JSON array for select/radio options
+  isRequired: boolean("isRequired").default(false),
+  orderIndex: int("orderIndex").default(0),
+  createdAt: timestamp("createdAt").defaultNow(),
+});
+
+export type FormField = typeof formFields.$inferSelect;
+export type InsertFormField = typeof formFields.$inferInsert;
+
+/**
+ * Form Responses - User submissions to custom forms
+ */
+export const formResponses = mysqlTable("formResponses", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  formId: varchar("formId", { length: 64 }).notNull(),
+  userId: varchar("userId", { length: 64 }),
+  userName: varchar("userName", { length: 255 }),
+  userEmail: varchar("userEmail", { length: 320 }),
+  responseData: text("responseData").notNull(), // JSON object with field responses
+  submittedAt: timestamp("submittedAt").defaultNow(),
+});
+
+export type FormResponse = typeof formResponses.$inferSelect;
+export type InsertFormResponse = typeof formResponses.$inferInsert;
+
+/**
+ * Sponsors - Sponsor management for events (Business tier)
+ */
+export const sponsors = mysqlTable("sponsors", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  eventId: varchar("eventId", { length: 64 }).notNull(),
+  name: varchar("name", { length: 255 }).notNull(),
+  tier: mysqlEnum("tier", ["platinum", "gold", "silver", "bronze"]).default("bronze"),
+  logoUrl: varchar("logoUrl", { length: 1024 }),
+  website: varchar("website", { length: 1024 }),
+  description: text("description"),
+  contributionAmount: decimal("contributionAmount", { precision: 10, scale: 2 }),
+  contactName: varchar("contactName", { length: 255 }),
+  contactEmail: varchar("contactEmail", { length: 320 }),
+  contactPhone: varchar("contactPhone", { length: 50 }),
+  isActive: boolean("isActive").default(true),
+  createdAt: timestamp("createdAt").defaultNow(),
+});
+
+export type Sponsor = typeof sponsors.$inferSelect;
+export type InsertSponsor = typeof sponsors.$inferInsert;
+
+/**
+ * Donations - Fundraising and donation tracking (Business tier)
+ */
+export const donations = mysqlTable("donations", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  eventId: varchar("eventId", { length: 64 }).notNull(),
+  donorName: varchar("donorName", { length: 255 }),
+  donorEmail: varchar("donorEmail", { length: 320 }),
+  amount: decimal("amount", { precision: 10, scale: 2 }).notNull(),
+  message: text("message"),
+  isAnonymous: boolean("isAnonymous").default(false),
+  stripePaymentId: varchar("stripePaymentId", { length: 255 }),
+  status: mysqlEnum("status", ["pending", "completed", "refunded"]).default("pending"),
+  donatedAt: timestamp("donatedAt").defaultNow(),
+});
+
+export type Donation = typeof donations.$inferSelect;
+export type InsertDonation = typeof donations.$inferInsert;
+

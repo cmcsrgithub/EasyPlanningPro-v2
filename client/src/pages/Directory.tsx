@@ -1,5 +1,5 @@
 import { trpc } from "@/lib/trpc";
-import { Users, Plus, Mail, Phone, UserCircle } from "lucide-react";
+import { Users, Plus, Mail, Phone, UserCircle, Download } from "lucide-react";
 import { Link } from "wouter";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -20,12 +20,44 @@ export default function Directory() {
               Manage your member directory and contacts
             </p>
           </div>
-          <Link href="/directory/new">
-            <Button size="lg">
-              <Plus className="mr-2 h-5 w-5" />
-              Add Member
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={() => {
+                if (!members || members.length === 0) {
+                  alert("No members to export");
+                  return;
+                }
+                const headers = ["Name", "Email", "Phone", "Branch", "Interests", "Admin", "Created"];
+                const rows = members.map((m) => [
+                  m.name,
+                  m.email || "",
+                  m.phone || "",
+                  m.branch || "",
+                  m.interests || "",
+                  m.isAdmin ? "Yes" : "No",
+                  m.createdAt ? new Date(m.createdAt).toLocaleDateString() : "",
+                ]);
+                const csv = [headers, ...rows].map((row) => row.join(",")).join("\n");
+                const blob = new Blob([csv], { type: "text/csv" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = `members_${new Date().toISOString().split("T")[0]}.csv`;
+                a.click();
+              }}
+            >
+              <Download className="mr-2 h-5 w-5" />
+              Export CSV
             </Button>
-          </Link>
+            <Link href="/directory/new">
+              <Button size="lg">
+                <Plus className="mr-2 h-5 w-5" />
+                Add Member
+              </Button>
+            </Link>
+          </div>
         </div>
 
         {isLoading ? (

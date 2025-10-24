@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import DashboardLayout from "@/components/DashboardLayout";
 import { trpc } from "@/lib/trpc";
-import { Calendar, MapPin, Users, Clock, Edit, Trash2, ArrowLeft, ListTodo, DollarSign, MessageSquare, Award, Heart } from "lucide-react";
+import { Calendar, MapPin, Users, Clock, Edit, Trash2, ArrowLeft, ListTodo, DollarSign, MessageSquare, Award, Heart, FileText, BarChart } from "lucide-react";
 import { useLocation, useRoute } from "wouter";
 import { toast } from "sonner";
 
@@ -103,6 +103,14 @@ export default function EventDetail() {
             <Button variant="outline" onClick={() => setLocation(`/events/${eventId}/fundraising`)}>
               <Heart className="mr-2 h-4 w-4" />
               Fundraising
+            </Button>
+            <Button variant="outline" onClick={() => setLocation(`/events/${eventId}/forms`)}>
+              <FileText className="mr-2 h-4 w-4" />
+              Forms
+            </Button>
+            <Button variant="outline" onClick={() => setLocation(`/events/${eventId}/analytics`)}>
+              <BarChart className="mr-2 h-4 w-4" />
+              Analytics
             </Button>
             <Button variant="outline" onClick={() => setLocation(`/events/${eventId}/edit`)}>
               <Edit className="mr-2 h-4 w-4" />

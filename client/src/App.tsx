@@ -28,6 +28,8 @@ import PackageDetail from "@/pages/PackageDetail";
 import Branding from "@/pages/Branding";
 import Sponsors from "@/pages/Sponsors";
 import Fundraising from "@/pages/Fundraising";
+import CustomForms from "@/pages/CustomForms";
+import Analytics from "@/pages/Analytics";
 import EventCheckout from "./pages/EventCheckout";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import Team from "./pages/Team";
@@ -65,6 +67,8 @@ function Router() {
       <Route path="/branding" component={Branding} />
       <Route path="/events/:eventId/sponsors" component={Sponsors} />
       <Route path="/events/:eventId/fundraising" component={Fundraising} />
+      <Route path="/events/:eventId/forms" component={CustomForms} />
+      <Route path="/events/:eventId/analytics" component={Analytics} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

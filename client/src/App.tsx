@@ -48,6 +48,8 @@ import CalendarView from "./pages/CalendarView";
 import TravelPlanner from "./pages/TravelPlanner";
 import Forum from "./pages/Forum";
 import SupportTickets from "./pages/SupportTickets";
+import AdminDashboard from "./pages/AdminDashboard";
+import EmailMarketing from "./pages/EmailMarketing";
 
 function Router() {
   return (
@@ -86,6 +88,8 @@ function Router() {
       <Route path={"/travel"} component={TravelPlanner} />
       <Route path={"/forum"} component={Forum} />
       <Route path={"/tickets"} component={SupportTickets} />
+      <Route path={"/admin"} component={AdminDashboard} />
+      <Route path={"/email-marketing"} component={EmailMarketing} />
       <Route path={"/team"} component={Team} />
       <Route path={"/polls"} component={Polls} />
       <Route path={"/polls/new"} component={PollForm} />

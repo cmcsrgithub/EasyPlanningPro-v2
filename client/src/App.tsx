@@ -38,6 +38,7 @@ import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import Profile from "./pages/Profile";
+import Activities from "./pages/Activities";
 
 function Router() {
   return (
@@ -65,6 +66,7 @@ function Router() {
       <Route path={"/forgot-password"} component={ForgotPassword} />
       <Route path={"/reset-password"} component={ResetPassword} />
       <Route path={"/profile"} component={Profile} />
+      <Route path={"/activities"} component={Activities} />
       <Route path={"/team"} component={Team} />
       <Route path={"/polls"} component={Polls} />
       <Route path={"/polls/new"} component={PollForm} />

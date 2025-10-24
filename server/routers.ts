@@ -19,6 +19,7 @@ import { brandingRouter } from "./routers/branding";
 import { customFormsRouter } from "./routers/customForms";
 import { sponsorsRouter } from "./routers/sponsors";
 import { donationsRouter } from "./routers/donations";
+import { activitiesRouter } from "./routers/activities";
 
 export const appRouter = router({
   system: systemRouter,
@@ -51,6 +52,7 @@ export const appRouter = router({
   customForms: customFormsRouter,
   sponsors: sponsorsRouter,
   donations: donationsRouter,
+  activities: activitiesRouter,
 });
 
 export type AppRouter = typeof appRouter;

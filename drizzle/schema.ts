@@ -511,3 +511,51 @@ export const donations = mysqlTable("donations", {
 export type Donation = typeof donations.$inferSelect;
 export type InsertDonation = typeof donations.$inferInsert;
 
+
+/**
+ * Activities - Activity and session management
+ */
+export const activities = mysqlTable("activities", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  eventId: varchar("eventId", { length: 64 }).notNull(),
+  title: varchar("title", { length: 255 }).notNull(),
+  description: text("description"),
+  activityType: varchar("activityType", { length: 100 }), // workshop, session, tour, meal, etc.
+  startTime: timestamp("startTime").notNull(),
+  endTime: timestamp("endTime").notNull(),
+  venueId: varchar("venueId", { length: 64 }),
+  location: varchar("location", { length: 500 }),
+  capacity: int("capacity"),
+  registrationRequired: boolean("registrationRequired").default(false),
+  registrationDeadline: timestamp("registrationDeadline"),
+  price: decimal("price", { precision: 10, scale: 2 }).default("0"),
+  organizerId: varchar("organizerId", { length: 64 }),
+  organizerName: varchar("organizerName", { length: 255 }),
+  materials: text("materials"), // JSON string of required materials
+  equipment: text("equipment"), // JSON string of required equipment
+  notes: text("notes"),
+  status: mysqlEnum("status", ["active", "cancelled", "completed"]).default("active"),
+  createdAt: timestamp("createdAt").defaultNow(),
+  updatedAt: timestamp("updatedAt").defaultNow(),
+});
+
+export type Activity = typeof activities.$inferSelect;
+export type InsertActivity = typeof activities.$inferInsert;
+
+/**
+ * Activity Registrations - Track who registered for activities
+ */
+export const activityRegistrations = mysqlTable("activityRegistrations", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  activityId: varchar("activityId", { length: 64 }).notNull(),
+  userId: varchar("userId", { length: 64 }).notNull(),
+  memberId: varchar("memberId", { length: 64 }),
+  registeredAt: timestamp("registeredAt").defaultNow(),
+  status: mysqlEnum("status", ["confirmed", "cancelled", "waitlist"]).default("confirmed"),
+  notes: text("notes"),
+  createdAt: timestamp("createdAt").defaultNow(),
+});
+
+export type ActivityRegistration = typeof activityRegistrations.$inferSelect;
+export type InsertActivityRegistration = typeof activityRegistrations.$inferInsert;
+

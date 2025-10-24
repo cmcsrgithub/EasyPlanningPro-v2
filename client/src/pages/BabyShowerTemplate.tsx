@@ -1,10 +1,10 @@
 import DashboardLayout from "@/components/DashboardLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "wouter";
 
 export default function BabyShowerTemplate() {
-  const navigate = useNavigate();
+  const [, setLocation] = useLocation();
 
   return (
     <DashboardLayout>
@@ -23,7 +23,7 @@ export default function BabyShowerTemplate() {
             <p className="text-muted-foreground">
               This template includes pre-configured settings, checklists, and workflows optimized for Baby Shower events.
             </p>
-            <Button onClick={() => navigate("/events/create?template=BabyShowerTemplate")}>
+            <Button onClick={() => setLocation("/events/create?template=BabyShowerTemplate")}>
               Create Event from Template
             </Button>
           </CardContent>

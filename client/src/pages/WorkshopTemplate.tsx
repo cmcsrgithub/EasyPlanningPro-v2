@@ -1,10 +1,10 @@
 import DashboardLayout from "@/components/DashboardLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "wouter";
 
 export default function WorkshopTemplate() {
-  const navigate = useNavigate();
+  const [, setLocation] = useLocation();
 
   return (
     <DashboardLayout>
@@ -23,7 +23,7 @@ export default function WorkshopTemplate() {
             <p className="text-muted-foreground">
               This template includes pre-configured settings, checklists, and workflows optimized for Workshop events.
             </p>
-            <Button onClick={() => navigate("/events/create?template=WorkshopTemplate")}>
+            <Button onClick={() => setLocation("/events/create?template=WorkshopTemplate")}>
               Create Event from Template
             </Button>
           </CardContent>

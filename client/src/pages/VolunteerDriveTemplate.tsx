@@ -1,10 +1,10 @@
 import DashboardLayout from "@/components/DashboardLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "wouter";
 
 export default function VolunteerDriveTemplate() {
-  const navigate = useNavigate();
+  const [, setLocation] = useLocation();
 
   return (
     <DashboardLayout>
@@ -23,7 +23,7 @@ export default function VolunteerDriveTemplate() {
             <p className="text-muted-foreground">
               This template includes pre-configured settings, checklists, and workflows optimized for Volunteer Drive events.
             </p>
-            <Button onClick={() => navigate("/events/create?template=VolunteerDriveTemplate")}>
+            <Button onClick={() => setLocation("/events/create?template=VolunteerDriveTemplate")}>
               Create Event from Template
             </Button>
           </CardContent>

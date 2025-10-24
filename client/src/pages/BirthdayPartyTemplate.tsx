@@ -1,34 +1,9 @@
-import DashboardLayout from "@/components/DashboardLayout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useLocation } from "wouter";
+import TemplateBuilder from "@/components/TemplateBuilder";
 
-export default function BirthdayPartyTemplate() {
-  const [, setLocation] = useLocation();
+interface BirthdayPartyTemplateProps {
+  isPreview?: boolean;
+}
 
-  return (
-    <DashboardLayout>
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-4xl font-semibold tracking-tight">Birthday Party</h1>
-          <p className="text-muted-foreground mt-2">Birthday celebration template</p>
-        </div>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Use This Template</CardTitle>
-            <CardDescription>Create a new event using this Birthday Party template</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-muted-foreground">
-              This template includes pre-configured settings, checklists, and workflows optimized for Birthday Party events.
-            </p>
-            <Button onClick={() => setLocation("/events/create?template=BirthdayPartyTemplate")}>
-              Create Event from Template
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
-    </DashboardLayout>
-  );
+export default function BirthdayPartyTemplate({ isPreview = false }: BirthdayPartyTemplateProps) {
+  return <TemplateBuilder templateId="birthday-party" isPreview={isPreview} />;
 }

@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Search, Sparkles } from "lucide-react";
+import TemplatePreviewModal from "@/components/TemplatePreviewModal";
 
 const templates = [
   // Social Events
@@ -82,6 +83,8 @@ const templates = [
 export default function TemplateGallery() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [previewTemplate, setPreviewTemplate] = useState<{ id: string; name: string } | null>(null);
+  const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
 
   const categories = Array.from(new Set(templates.map(t => t.category)));
 
@@ -92,6 +95,36 @@ export default function TemplateGallery() {
     return matchesSearch && matchesCategory;
   });
 
+  const handleMouseEnter = (templateId: string, templateName: string) => {
+    // Clear any existing timeout
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+    }
+    
+    // Set a delay before showing preview (500ms)
+    const timeout = setTimeout(() => {
+      setPreviewTemplate({ id: templateId, name: templateName });
+    }, 500);
+    
+    setHoverTimeout(timeout);
+  };
+
+  const handleMouseLeave = () => {
+    // Clear the timeout if user moves away before preview shows
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+      setHoverTimeout(null);
+    }
+  };
+
+  const handleClosePreview = () => {
+    setPreviewTemplate(null);
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+      setHoverTimeout(null);
+    }
+  };
+
   return (
     <DashboardLayout>
       <div className="space-y-6">
@@ -99,7 +132,7 @@ export default function TemplateGallery() {
           <div>
             <h1 className="text-4xl font-semibold tracking-tight">Template Gallery</h1>
             <p className="text-muted-foreground mt-2">
-              Choose from 53 pre-built event templates
+              Choose from 53 pre-built event templates • Hover to preview
             </p>
           </div>
           <Link href="/templates">
@@ -144,26 +177,32 @@ export default function TemplateGallery() {
         {/* Templates Grid */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filteredTemplates.map((template) => (
-            <Link key={template.id} href={`/templates/gallery/${template.id}`}>
-              <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
-                <CardHeader>
-                  <div className="flex items-start justify-between mb-2">
-                    <div className="text-4xl">{template.icon}</div>
-                    <Badge variant="secondary">{template.category}</Badge>
-                  </div>
-                  <CardTitle className="text-lg">{template.name}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground line-clamp-3">
-                    {template.description}
-                  </p>
-                  <Button className="w-full mt-4" size="sm">
-                    <Sparkles className="mr-2 h-4 w-4" />
-                    Use Template
-                  </Button>
-                </CardContent>
-              </Card>
-            </Link>
+            <div
+              key={template.id}
+              onMouseEnter={() => handleMouseEnter(template.id, template.name)}
+              onMouseLeave={handleMouseLeave}
+            >
+              <Link href={`/templates/gallery/${template.id}`}>
+                <Card className="hover:shadow-lg transition-all cursor-pointer h-full hover:scale-105">
+                  <CardHeader>
+                    <div className="flex items-start justify-between mb-2">
+                      <div className="text-4xl">{template.icon}</div>
+                      <Badge variant="secondary">{template.category}</Badge>
+                    </div>
+                    <CardTitle className="text-lg">{template.name}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground line-clamp-3">
+                      {template.description}
+                    </p>
+                    <Button className="w-full mt-4" size="sm">
+                      <Sparkles className="mr-2 h-4 w-4" />
+                      Use Template
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
           ))}
         </div>
 
@@ -179,6 +218,16 @@ export default function TemplateGallery() {
           </Card>
         )}
       </div>
+
+      {/* Preview Modal */}
+      {previewTemplate && (
+        <TemplatePreviewModal
+          templateId={previewTemplate.id}
+          templateName={previewTemplate.name}
+          isOpen={true}
+          onClose={handleClosePreview}
+        />
+      )}
     </DashboardLayout>
   );
 }

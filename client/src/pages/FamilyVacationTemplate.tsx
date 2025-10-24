@@ -1,34 +1,9 @@
-import DashboardLayout from "@/components/DashboardLayout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useLocation } from "wouter";
+import TemplateBuilder from "@/components/TemplateBuilder";
 
-export default function FamilyVacationTemplate() {
-  const [, setLocation] = useLocation();
+interface FamilyVacationTemplateProps {
+  isPreview?: boolean;
+}
 
-  return (
-    <DashboardLayout>
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-4xl font-semibold tracking-tight">Family Vacation</h1>
-          <p className="text-muted-foreground mt-2">Family vacation planning template</p>
-        </div>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Use This Template</CardTitle>
-            <CardDescription>Create a new event using this Family Vacation template</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-muted-foreground">
-              This template includes pre-configured settings, checklists, and workflows optimized for Family Vacation events.
-            </p>
-            <Button onClick={() => setLocation("/events/create?template=FamilyVacationTemplate")}>
-              Create Event from Template
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
-    </DashboardLayout>
-  );
+export default function FamilyVacationTemplate({ isPreview = false }: FamilyVacationTemplateProps) {
+  return <TemplateBuilder templateId="family-vacation" isPreview={isPreview} />;
 }

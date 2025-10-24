@@ -1,34 +1,9 @@
-import DashboardLayout from "@/components/DashboardLayout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useLocation } from "wouter";
+import TemplateBuilder from "@/components/TemplateBuilder";
 
-export default function GroupTripTemplate() {
-  const [, setLocation] = useLocation();
+interface GroupTripTemplateProps {
+  isPreview?: boolean;
+}
 
-  return (
-    <DashboardLayout>
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-4xl font-semibold tracking-tight">Group Trip</h1>
-          <p className="text-muted-foreground mt-2">Group travel planning template</p>
-        </div>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Use This Template</CardTitle>
-            <CardDescription>Create a new event using this Group Trip template</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-muted-foreground">
-              This template includes pre-configured settings, checklists, and workflows optimized for Group Trip events.
-            </p>
-            <Button onClick={() => setLocation("/events/create?template=GroupTripTemplate")}>
-              Create Event from Template
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
-    </DashboardLayout>
-  );
+export default function GroupTripTemplate({ isPreview = false }: GroupTripTemplateProps) {
+  return <TemplateBuilder templateId="group-trip" isPreview={isPreview} />;
 }

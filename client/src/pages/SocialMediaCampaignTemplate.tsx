@@ -1,34 +1,9 @@
-import DashboardLayout from "@/components/DashboardLayout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useLocation } from "wouter";
+import TemplateBuilder from "@/components/TemplateBuilder";
 
-export default function SocialMediaCampaignTemplate() {
-  const [, setLocation] = useLocation();
+interface SocialMediaCampaignTemplateProps {
+  isPreview?: boolean;
+}
 
-  return (
-    <DashboardLayout>
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-4xl font-semibold tracking-tight">Social Media Campaign</h1>
-          <p className="text-muted-foreground mt-2">Social media campaign template</p>
-        </div>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Use This Template</CardTitle>
-            <CardDescription>Create a new event using this Social Media Campaign template</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-muted-foreground">
-              This template includes pre-configured settings, checklists, and workflows optimized for Social Media Campaign events.
-            </p>
-            <Button onClick={() => setLocation("/events/create?template=SocialMediaCampaignTemplate")}>
-              Create Event from Template
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
-    </DashboardLayout>
-  );
+export default function SocialMediaCampaignTemplate({ isPreview = false }: SocialMediaCampaignTemplateProps) {
+  return <TemplateBuilder templateId="social-media-campaign" isPreview={isPreview} />;
 }

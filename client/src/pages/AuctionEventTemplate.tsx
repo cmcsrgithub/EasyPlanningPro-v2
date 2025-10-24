@@ -1,34 +1,9 @@
-import DashboardLayout from "@/components/DashboardLayout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useLocation } from "wouter";
+import TemplateBuilder from "@/components/TemplateBuilder";
 
-export default function AuctionEventTemplate() {
-  const [, setLocation] = useLocation();
+interface AuctionEventTemplateProps {
+  isPreview?: boolean;
+}
 
-  return (
-    <DashboardLayout>
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-4xl font-semibold tracking-tight">Auction Event</h1>
-          <p className="text-muted-foreground mt-2">Charity or fundraising auction template</p>
-        </div>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Use This Template</CardTitle>
-            <CardDescription>Create a new event using this Auction Event template</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-muted-foreground">
-              This template includes pre-configured settings, checklists, and workflows optimized for Auction Event events.
-            </p>
-            <Button onClick={() => setLocation("/events/create?template=AuctionEventTemplate")}>
-              Create Event from Template
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
-    </DashboardLayout>
-  );
+export default function AuctionEventTemplate({ isPreview = false }: AuctionEventTemplateProps) {
+  return <TemplateBuilder templateId="auction-event" isPreview={isPreview} />;
 }

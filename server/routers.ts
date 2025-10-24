@@ -22,6 +22,7 @@ import { donationsRouter } from "./routers/donations";
 import { activitiesRouter } from "./routers/activities";
 import { templatesRouter } from "./routers/templates";
 import { waitlistRouter } from "./routers/waitlist";
+import { travelRouter } from "./routers/travel";
 
 export const appRouter = router({
   system: systemRouter,
@@ -57,6 +58,7 @@ export const appRouter = router({
   activities: activitiesRouter,
   templates: templatesRouter,
   waitlist: waitlistRouter,
+  travel: travelRouter,
 });
 
 export type AppRouter = typeof appRouter;

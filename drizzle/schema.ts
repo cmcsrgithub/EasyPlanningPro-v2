@@ -606,3 +606,54 @@ export const eventWaitlist = mysqlTable("eventWaitlist", {
 export type EventWaitlist = typeof eventWaitlist.$inferSelect;
 export type InsertEventWaitlist = typeof eventWaitlist.$inferInsert;
 
+
+
+
+/**
+ * Travel Arrangements - Manage travel for events
+ */
+export const travelArrangements = mysqlTable("travelArrangements", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  eventId: varchar("eventId", { length: 64 }).notNull(),
+  userId: varchar("userId", { length: 64 }).notNull(),
+  travelType: mysqlEnum("travelType", ["flight", "train", "bus", "car", "other"]).notNull(),
+  departureLocation: varchar("departureLocation", { length: 255 }),
+  arrivalLocation: varchar("arrivalLocation", { length: 255 }),
+  departureTime: timestamp("departureTime"),
+  arrivalTime: timestamp("arrivalTime"),
+  confirmationNumber: varchar("confirmationNumber", { length: 100 }),
+  carrier: varchar("carrier", { length: 255 }), // Airline, train company, etc.
+  cost: decimal("cost", { precision: 10, scale: 2 }),
+  notes: text("notes"),
+  status: mysqlEnum("status", ["planned", "booked", "confirmed", "cancelled"]).default("planned"),
+  createdAt: timestamp("createdAt").defaultNow(),
+  updatedAt: timestamp("updatedAt").defaultNow(),
+});
+
+export type TravelArrangement = typeof travelArrangements.$inferSelect;
+export type InsertTravelArrangement = typeof travelArrangements.$inferInsert;
+
+/**
+ * Accommodations - Manage lodging for events
+ */
+export const accommodations = mysqlTable("accommodations", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  eventId: varchar("eventId", { length: 64 }).notNull(),
+  userId: varchar("userId", { length: 64 }).notNull(),
+  name: varchar("name", { length: 255 }).notNull(),
+  address: text("address"),
+  checkInDate: timestamp("checkInDate"),
+  checkOutDate: timestamp("checkOutDate"),
+  confirmationNumber: varchar("confirmationNumber", { length: 100 }),
+  roomType: varchar("roomType", { length: 100 }),
+  cost: decimal("cost", { precision: 10, scale: 2 }),
+  contactPhone: varchar("contactPhone", { length: 50 }),
+  notes: text("notes"),
+  status: mysqlEnum("status", ["planned", "booked", "confirmed", "cancelled"]).default("planned"),
+  createdAt: timestamp("createdAt").defaultNow(),
+  updatedAt: timestamp("updatedAt").defaultNow(),
+});
+
+export type Accommodation = typeof accommodations.$inferSelect;
+export type InsertAccommodation = typeof accommodations.$inferInsert;
+

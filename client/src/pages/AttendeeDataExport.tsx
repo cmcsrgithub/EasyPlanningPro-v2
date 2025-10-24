@@ -1,17 +1,17 @@
 import DashboardLayout from "@/components/DashboardLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
-export default function PaymentSuccess() {
+export default function AttendeeDataExport() {
   return (
     <DashboardLayout>
       <div className="space-y-6">
         <div>
-          <h1 className="text-4xl font-semibold tracking-tight">Payment Success</h1>
-          <p className="text-muted-foreground mt-2">Payment confirmation</p>
+          <h1 className="text-4xl font-semibold tracking-tight">Attendee Data Export</h1>
+          <p className="text-muted-foreground mt-2">Export attendee data</p>
         </div>
         <Card>
           <CardHeader>
-            <CardTitle>Payment Success</CardTitle>
+            <CardTitle>Attendee Data Export</CardTitle>
             <CardDescription>Feature under development</CardDescription>
           </CardHeader>
           <CardContent>

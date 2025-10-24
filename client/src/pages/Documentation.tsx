@@ -1,17 +1,17 @@
 import DashboardLayout from "@/components/DashboardLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
-export default function PaymentSuccess() {
+export default function Documentation() {
   return (
     <DashboardLayout>
       <div className="space-y-6">
         <div>
-          <h1 className="text-4xl font-semibold tracking-tight">Payment Success</h1>
-          <p className="text-muted-foreground mt-2">Payment confirmation</p>
+          <h1 className="text-4xl font-semibold tracking-tight">Documentation</h1>
+          <p className="text-muted-foreground mt-2">Platform documentation</p>
         </div>
         <Card>
           <CardHeader>
-            <CardTitle>Payment Success</CardTitle>
+            <CardTitle>Documentation</CardTitle>
             <CardDescription>Feature under development</CardDescription>
           </CardHeader>
           <CardContent>

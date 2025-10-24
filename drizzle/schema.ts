@@ -732,3 +732,156 @@ export const ticketComments = mysqlTable("ticketComments", {
 export type TicketComment = typeof ticketComments.$inferSelect;
 export type InsertTicketComment = typeof ticketComments.$inferInsert;
 
+
+// Event Types
+export const eventTypes = pgTable("event_types", {
+  id: text("id").primaryKey().$defaultFn(() => createId()),
+  name: text("name").notNull(),
+  description: text("description"),
+  category: text("category"),
+  defaultDuration: integer("default_duration"),
+  defaultCapacity: integer("default_capacity"),
+  customFields: json("custom_fields"),
+  isActive: boolean("is_active").default(true),
+  createdBy: text("created_by"),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+// Invitations
+export const invitations = pgTable("invitations", {
+  id: text("id").primaryKey().$defaultFn(() => createId()),
+  eventId: text("event_id").references(() => events.id, { onDelete: "cascade" }),
+  recipientEmail: text("recipient_email").notNull(),
+  recipientName: text("recipient_name"),
+  status: text("status").notNull().default("pending"), // pending, sent, opened, accepted, declined
+  message: text("message"),
+  sentAt: timestamp("sent_at"),
+  openedAt: timestamp("opened_at"),
+  respondedAt: timestamp("responded_at"),
+  plusOnes: integer("plus_ones").default(0),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+// Guest List
+export const guestList = pgTable("guest_list", {
+  id: text("id").primaryKey().$defaultFn(() => createId()),
+  eventId: text("event_id").references(() => events.id, { onDelete: "cascade" }),
+  name: text("name").notNull(),
+  email: text("email"),
+  phone: text("phone"),
+  status: text("status").default("invited"), // invited, confirmed, declined, maybe, attended
+  category: text("category"), // vip, speaker, sponsor, general
+  dietaryRestrictions: text("dietary_restrictions"),
+  specialNeeds: text("special_needs"),
+  tableAssignment: text("table_assignment"),
+  seatNumber: text("seat_number"),
+  checkedIn: boolean("checked_in").default(false),
+  checkedInAt: timestamp("checked_in_at"),
+  plusOnes: integer("plus_ones").default(0),
+  notes: text("notes"),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+// Seating Charts
+export const seatingCharts = pgTable("seating_charts", {
+  id: text("id").primaryKey().$defaultFn(() => createId()),
+  eventId: text("event_id").references(() => events.id, { onDelete: "cascade" }),
+  name: text("name").notNull(),
+  layout: json("layout"), // JSON structure for table positions
+  totalSeats: integer("total_seats"),
+  assignedSeats: integer("assigned_seats").default(0),
+  isActive: boolean("is_active").default(true),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+// Tables (for seating)
+export const seatingTables = pgTable("seating_tables", {
+  id: text("id").primaryKey().$defaultFn(() => createId()),
+  chartId: text("chart_id").references(() => seatingCharts.id, { onDelete: "cascade" }),
+  tableNumber: text("table_number").notNull(),
+  capacity: integer("capacity").notNull(),
+  shape: text("shape").default("round"), // round, rectangle, square
+  position: json("position"), // {x, y} coordinates
+  assignedGuests: integer("assigned_guests").default(0),
+  notes: text("notes"),
+});
+
+// Tickets
+export const tickets = pgTable("tickets", {
+  id: text("id").primaryKey().$defaultFn(() => createId()),
+  eventId: text("event_id").references(() => events.id, { onDelete: "cascade" }),
+  ticketTypeId: text("ticket_type_id"),
+  attendeeName: text("attendee_name").notNull(),
+  attendeeEmail: text("attendee_email").notNull(),
+  ticketNumber: text("ticket_number").notNull().unique(),
+  qrCode: text("qr_code"),
+  status: text("status").default("active"), // active, used, cancelled, refunded
+  purchasePrice: decimal("purchase_price", { precision: 10, scale: 2 }),
+  purchasedAt: timestamp("purchased_at").defaultNow(),
+  usedAt: timestamp("used_at"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+// Ticket Types
+export const ticketTypes = pgTable("ticket_types", {
+  id: text("id").primaryKey().$defaultFn(() => createId()),
+  eventId: text("event_id").references(() => events.id, { onDelete: "cascade" }),
+  name: text("name").notNull(),
+  description: text("description"),
+  price: decimal("price", { precision: 10, scale: 2 }).notNull(),
+  quantity: integer("quantity"),
+  sold: integer("sold").default(0),
+  salesStart: timestamp("sales_start"),
+  salesEnd: timestamp("sales_end"),
+  isActive: boolean("is_active").default(true),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+// Checklists
+export const checklists = pgTable("checklists", {
+  id: text("id").primaryKey().$defaultFn(() => createId()),
+  eventId: text("event_id").references(() => events.id, { onDelete: "cascade" }),
+  name: text("name").notNull(),
+  description: text("description"),
+  category: text("category"),
+  isTemplate: boolean("is_template").default(false),
+  createdBy: text("created_by"),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+// Checklist Items
+export const checklistItems = pgTable("checklist_items", {
+  id: text("id").primaryKey().$defaultFn(() => createId()),
+  checklistId: text("checklist_id").references(() => checklists.id, { onDelete: "cascade" }),
+  title: text("title").notNull(),
+  description: text("description"),
+  dueDate: timestamp("due_date"),
+  assignedTo: text("assigned_to"),
+  priority: text("priority").default("medium"), // low, medium, high, urgent
+  status: text("status").default("pending"), // pending, in_progress, completed, cancelled
+  completedAt: timestamp("completed_at"),
+  completedBy: text("completed_by"),
+  order: integer("order").default(0),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const userSubscriptions = pgTable("user_subscriptions", {
+  id: text("id").primaryKey().$defaultFn(() => createId()),
+  userId: text("user_id").notNull(),
+  plan: text("plan").notNull(), // basic, premium, pro, business
+  status: text("status").notNull().default("active"), // active, cancelled, expired, past_due
+  stripeSubscriptionId: text("stripe_subscription_id"),
+  stripeCustomerId: text("stripe_customer_id"),
+  currentPeriodStart: timestamp("current_period_start"),
+  currentPeriodEnd: timestamp("current_period_end"),
+  cancelAtPeriodEnd: boolean("cancel_at_period_end").default(false),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+
+// User Subscriptions

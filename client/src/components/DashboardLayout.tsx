@@ -43,7 +43,7 @@ const menuItems = [
   { icon: TicketIcon, label: "Support", path: "/tickets" },
   { icon: Shield, label: "Admin", path: "/admin" },
   { icon: DollarSign, label: "Affiliates", path: "/affiliates" },
-  { icon: HelpCircle, label: "Help Center", path: "/help" },
+  { icon: HelpCircle, label: "Help Center", path: "/help-center" },
   { icon: Settings, label: "Settings", path: "/settings" },
 ];
 

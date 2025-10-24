@@ -58,6 +58,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import HelpCenter from "./pages/HelpCenter";
+import HelpArticle from "./pages/HelpArticle";
 import ForumTopic from "./pages/ForumTopic";
 import TicketDetail from "./pages/TicketDetail";
 import Volunteers from "./pages/Volunteers";
@@ -155,7 +156,8 @@ function Router() {
       <Route path="/events/:eventId/fundraising" component={Fundraising} />
       <Route path="/events/:eventId/forms" component={CustomForms} />
       <Route path="/events/:eventId/analytics" component={Analytics} />
-      <Route path="/help" component={HelpCenter} />
+      <Route path="/help-center" component={HelpCenter} />
+      <Route path="/help/:slug" component={HelpArticle} />
       <Route path="/forum/:id" component={ForumTopic} />
       <Route path="/tickets/:id" component={TicketDetail} />
       <Route path="/volunteers" component={Volunteers} />

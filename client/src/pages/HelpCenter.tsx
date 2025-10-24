@@ -14,10 +14,10 @@ export default function HelpCenter() {
       title: "Getting Started",
       description: "Learn the basics of EasyPlanningPro",
       articles: [
-        "Creating your first event",
-        "Setting up your profile",
-        "Inviting team members",
-        "Understanding pricing tiers",
+        { title: "Creating your first event", slug: "creating-first-event" },
+        { title: "Setting up your profile", slug: "setting-up-profile" },
+        { title: "Inviting team members", slug: "inviting-team-members" },
+        { title: "Understanding pricing tiers", slug: "pricing-tiers" },
       ],
     },
     {
@@ -25,10 +25,10 @@ export default function HelpCenter() {
       title: "Event Management",
       description: "Manage events like a pro",
       articles: [
-        "Creating and editing events",
-        "Managing registrations",
-        "Setting up ticketing",
-        "Using event templates",
+        { title: "Creating and editing events", slug: "creating-editing-events" },
+        { title: "Managing registrations", slug: "managing-registrations" },
+        { title: "Setting up ticketing", slug: "setting-up-ticketing" },
+        { title: "Using event templates", slug: "using-event-templates" },
       ],
     },
     {
@@ -36,10 +36,10 @@ export default function HelpCenter() {
       title: "Video Tutorials",
       description: "Watch step-by-step guides",
       articles: [
-        "Platform overview (5 min)",
-        "Creating your first event (10 min)",
-        "Advanced features tour (15 min)",
-        "Tips and tricks (8 min)",
+        { title: "Platform overview (5 min)", slug: "platform-overview" },
+        { title: "Creating your first event (10 min)", slug: "first-event-tutorial" },
+        { title: "Advanced features tour (15 min)", slug: "advanced-features" },
+        { title: "Tips and tricks (8 min)", slug: "tips-and-tricks" },
       ],
     },
     {
@@ -47,21 +47,30 @@ export default function HelpCenter() {
       title: "Support",
       description: "Get help from our team",
       articles: [
-        "Contact support",
-        "Submit a ticket",
-        "Live chat (Business plan)",
-        "Community forum",
+        { title: "Contact support", slug: "contact-support", link: "/contact" },
+        { title: "Submit a ticket", slug: "submit-ticket", link: "/support" },
+        { title: "Live chat (Business plan)", slug: "live-chat" },
+        { title: "Community forum", slug: "community-forum", link: "/forum" },
       ],
     },
   ];
 
   const popularArticles = [
-    { title: "How to create an event", views: 1250 },
-    { title: "Setting up payment processing", views: 980 },
-    { title: "Managing team members", views: 875 },
-    { title: "Customizing your event page", views: 720 },
-    { title: "Understanding analytics", views: 650 },
+    { title: "How to create an event", slug: "creating-first-event", views: 1250 },
+    { title: "Setting up payment processing", slug: "payment-processing", views: 980 },
+    { title: "Managing team members", slug: "inviting-team-members", views: 875 },
+    { title: "Customizing your event page", slug: "customizing-event-page", views: 720 },
+    { title: "Understanding analytics", slug: "understanding-analytics", views: 650 },
   ];
+
+  const filteredCategories = categories.map(category => ({
+    ...category,
+    articles: category.articles.filter(article =>
+      article.title.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  })).filter(category => category.articles.length > 0);
+
+  const displayCategories = searchQuery ? filteredCategories : categories;
 
   return (
     <DashboardLayout>
@@ -85,7 +94,7 @@ export default function HelpCenter() {
 
         {/* Categories */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {categories.map((category) => (
+          {displayCategories.map((category) => (
             <Card key={category.title} className="hover:shadow-md transition-shadow">
               <CardHeader>
                 <div className="flex items-center gap-3 mb-2">
@@ -99,13 +108,20 @@ export default function HelpCenter() {
               <CardContent>
                 <ul className="space-y-2">
                   {category.articles.map((article) => (
-                    <li key={article}>
-                      <a
-                        href="#"
-                        className="text-sm text-primary hover:underline"
-                      >
-                        {article}
-                      </a>
+                    <li key={article.slug}>
+                      {article.link ? (
+                        <Link href={article.link}>
+                          <a className="text-sm text-primary hover:underline">
+                            {article.title}
+                          </a>
+                        </Link>
+                      ) : (
+                        <Link href={`/help/${article.slug}`}>
+                          <a className="text-sm text-primary hover:underline">
+                            {article.title}
+                          </a>
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -123,16 +139,18 @@ export default function HelpCenter() {
             <div className="space-y-3">
               {popularArticles.map((article, index) => (
                 <div
-                  key={article.title}
+                  key={article.slug}
                   className="flex items-center justify-between p-3 border rounded-lg hover:bg-muted/50 cursor-pointer"
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-lg font-semibold text-muted-foreground">
                       {index + 1}
                     </span>
-                    <a href="#" className="text-primary hover:underline">
-                      {article.title}
-                    </a>
+                    <Link href={`/help/${article.slug}`}>
+                      <a className="text-primary hover:underline">
+                        {article.title}
+                      </a>
+                    </Link>
                   </div>
                   <span className="text-sm text-muted-foreground">
                     {article.views} views
@@ -165,9 +183,11 @@ export default function HelpCenter() {
               <p className="text-sm text-muted-foreground mb-4">
                 Detailed guides and API docs
               </p>
-              <a href="#" className="text-primary hover:underline">
-                View Docs →
-              </a>
+              <Link href="/api-documentation">
+                <a className="text-primary hover:underline">
+                  View Docs →
+                </a>
+              </Link>
             </CardContent>
           </Card>
 

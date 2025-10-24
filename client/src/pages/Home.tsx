@@ -251,7 +251,7 @@ export default function Home() {
     },
     {
       name: "Pro",
-      price: "$49.99",
+      price: "$59.99",
       period: "/month",
       description: "For professional planners",
       features: [

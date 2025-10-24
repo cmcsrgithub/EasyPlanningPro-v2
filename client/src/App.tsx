@@ -33,6 +33,11 @@ import Analytics from "@/pages/Analytics";
 import EventCheckout from "./pages/EventCheckout";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import Team from "./pages/Team";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
+import Profile from "./pages/Profile";
 
 function Router() {
   return (
@@ -55,6 +60,11 @@ function Router() {
       <Route path={"/directory/:id"} component={MemberDetail} />
       <Route path={"/gallery"} component={Gallery} />
       <Route path={"/settings"} component={Settings} />
+      <Route path={"/login"} component={Login} />
+      <Route path={"/signup"} component={Signup} />
+      <Route path={"/forgot-password"} component={ForgotPassword} />
+      <Route path={"/reset-password"} component={ResetPassword} />
+      <Route path={"/profile"} component={Profile} />
       <Route path={"/team"} component={Team} />
       <Route path={"/polls"} component={Polls} />
       <Route path={"/polls/new"} component={PollForm} />

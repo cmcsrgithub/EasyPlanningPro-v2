@@ -83,8 +83,8 @@ export default function Gallery() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">Photo Gallery</h1>
-            <p className="text-muted-foreground">Manage your event photo albums</p>
+            <h1 className="text-4xl font-semibold tracking-tight">Photo Gallery</h1>
+            <p className="text-muted-foreground mt-2">Manage your event photo albums</p>
           </div>
           <Dialog open={isCreateOpen} onOpenChange={setIsCreateOpen}>
             <DialogTrigger asChild>

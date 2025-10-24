@@ -83,8 +83,8 @@ export default function Settings() {
       <div className="space-y-8">
         {/* Header */}
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
-          <p className="text-muted-foreground">Manage your subscription and account settings</p>
+          <h1 className="text-4xl font-semibold tracking-tight">Settings</h1>
+          <p className="text-muted-foreground mt-2">Manage your subscription and account settings</p>
         </div>
 
         {/* Current Subscription */}

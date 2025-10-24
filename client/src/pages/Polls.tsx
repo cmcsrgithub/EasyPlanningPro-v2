@@ -60,8 +60,8 @@ export default function Polls() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">Polls & Surveys</h1>
-            <p className="text-muted-foreground">Create and manage polls for your events</p>
+            <h1 className="text-4xl font-semibold tracking-tight">Polls & Surveys</h1>
+            <p className="text-muted-foreground mt-2">Create and manage polls for your events</p>
           </div>
           <Button onClick={() => setLocation("/polls/new")}>
             <Plus className="mr-2 h-4 w-4" />

@@ -89,8 +89,8 @@ export default function EventPackages() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold">Event Packages</h1>
-            <p className="text-muted-foreground mt-1">Multi-event bundles and itineraries</p>
+            <h1 className="text-4xl font-semibold tracking-tight">Event Packages</h1>
+            <p className="text-muted-foreground mt-2">Multi-event bundles and itineraries</p>
           </div>
           <Dialog open={packageDialogOpen} onOpenChange={setPackageDialogOpen}>
             <DialogTrigger asChild>

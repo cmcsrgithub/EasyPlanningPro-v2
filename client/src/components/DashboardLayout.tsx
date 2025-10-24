@@ -268,7 +268,8 @@ function DashboardLayoutContent({
                 <DropdownMenuItem
                   onClick={async () => {
                     await logout();
-                    window.location.href = '/';
+                    // Force a hard redirect to clear all state
+                    window.location.replace('/');
                   }}
                   className="cursor-pointer text-destructive focus:text-destructive"
                 >

@@ -43,6 +43,7 @@ import ActivityDetail from "./pages/ActivityDetail";
 import ActivityForm from "./pages/ActivityForm";
 import MyRegistrations from "./pages/MyRegistrations";
 import Templates from "./pages/Templates";
+import TemplateGallery from "./pages/TemplateGallery";
 import WaitlistManagement from "./pages/WaitlistManagement";
 import CalendarView from "./pages/CalendarView";
 import TravelPlanner from "./pages/TravelPlanner";
@@ -124,6 +125,7 @@ function Router() {
       <Route path={"/activities/:id"} component={ActivityDetail} />
       <Route path={"/activities/:id/edit"} component={ActivityForm} />
       <Route path={"/my-registrations"} component={MyRegistrations} />
+      <Route path={"/templates/gallery"} component={TemplateGallery} />
       <Route path={"/templates"} component={Templates} />
       <Route path={"/events/:eventId/waitlist"} component={WaitlistManagement} />
       <Route path={"/calendar"} component={CalendarView} />

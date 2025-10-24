@@ -338,3 +338,83 @@ export const messages = mysqlTable("messages", {
 export type Message = typeof messages.$inferSelect;
 export type InsertMessage = typeof messages.$inferInsert;
 
+
+
+
+/**
+ * Event Packages - Multi-event bundles for itinerary and ticketing
+ */
+export const eventPackages = mysqlTable("eventPackages", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  userId: varchar("userId", { length: 64 }).notNull(),
+  title: varchar("title", { length: 255 }).notNull(),
+  description: text("description"),
+  price: decimal("price", { precision: 10, scale: 2 }),
+  imageUrl: varchar("imageUrl", { length: 1024 }),
+  isActive: boolean("isActive").default(true),
+  createdAt: timestamp("createdAt").defaultNow(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow(),
+});
+
+export type EventPackage = typeof eventPackages.$inferSelect;
+export type InsertEventPackage = typeof eventPackages.$inferInsert;
+
+/**
+ * Package Events - Junction table for events in packages
+ */
+export const packageEvents = mysqlTable("packageEvents", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  packageId: varchar("packageId", { length: 64 }).notNull(),
+  eventId: varchar("eventId", { length: 64 }).notNull(),
+  orderIndex: int("orderIndex").default(0),
+  createdAt: timestamp("createdAt").defaultNow(),
+});
+
+export type PackageEvent = typeof packageEvents.$inferSelect;
+export type InsertPackageEvent = typeof packageEvents.$inferInsert;
+
+/**
+ * Package Purchases - Track package ticket sales
+ */
+export const packagePurchases = mysqlTable("packagePurchases", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  packageId: varchar("packageId", { length: 64 }).notNull(),
+  userId: varchar("userId", { length: 64 }).notNull(),
+  userName: varchar("userName", { length: 255 }),
+  userEmail: varchar("userEmail", { length: 320 }),
+  amount: decimal("amount", { precision: 10, scale: 2 }).notNull(),
+  stripePaymentId: varchar("stripePaymentId", { length: 255 }),
+  status: mysqlEnum("status", ["pending", "completed", "refunded"]).default("pending"),
+  qrCode: text("qrCode"), // QR code data for ticket
+  purchasedAt: timestamp("purchasedAt").defaultNow(),
+});
+
+export type PackagePurchase = typeof packagePurchases.$inferSelect;
+export type InsertPackagePurchase = typeof packagePurchases.$inferInsert;
+
+
+
+
+/**
+ * Branding Settings - Custom subdomain and white-label configuration
+ */
+export const brandingSettings = mysqlTable("brandingSettings", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  userId: varchar("userId", { length: 64 }).notNull().unique(),
+  subdomain: varchar("subdomain", { length: 100 }).unique(),
+  customDomain: varchar("customDomain", { length: 255 }),
+  logoUrl: varchar("logoUrl", { length: 1024 }),
+  faviconUrl: varchar("faviconUrl", { length: 1024 }),
+  primaryColor: varchar("primaryColor", { length: 7 }).default("#00AEEF"),
+  secondaryColor: varchar("secondaryColor", { length: 7 }),
+  brandName: varchar("brandName", { length: 255 }),
+  tagline: text("tagline"),
+  customCss: text("customCss"),
+  isWhiteLabel: boolean("isWhiteLabel").default(false),
+  createdAt: timestamp("createdAt").defaultNow(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow(),
+});
+
+export type BrandingSettings = typeof brandingSettings.$inferSelect;
+export type InsertBrandingSettings = typeof brandingSettings.$inferInsert;
+

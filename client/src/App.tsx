@@ -23,6 +23,9 @@ import PollDetail from "./pages/PollDetail";
 import Tasks from "./pages/Tasks";
 import Financial from "@/pages/Financial";
 import Messaging from "@/pages/Messaging";
+import EventPackages from "@/pages/EventPackages";
+import PackageDetail from "@/pages/PackageDetail";
+import Branding from "@/pages/Branding";
 import EventCheckout from "./pages/EventCheckout";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import Team from "./pages/Team";
@@ -55,6 +58,9 @@ function Router() {
       <Route path="/events/:eventId/tasks" component={Tasks} />
       <Route path="/events/:eventId/financial" component={Financial} />
       <Route path="/events/:eventId/messaging" component={Messaging} />
+      <Route path="/packages" component={EventPackages} />
+      <Route path="/packages/:id" component={PackageDetail} />
+      <Route path="/branding" component={Branding} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

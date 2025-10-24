@@ -64,6 +64,20 @@
       "when": 1761245832609,
       "tag": "0008_mighty_steel_serpent",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1761298243947,
+      "tag": "0009_far_the_hunter",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1761298398182,
+      "tag": "0010_true_sauron",
+      "breakpoints": true
     }
   ]
 }

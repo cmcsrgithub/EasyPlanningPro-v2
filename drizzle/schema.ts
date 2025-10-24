@@ -303,3 +303,38 @@ export const budgets = mysqlTable("budgets", {
   createdAt: timestamp("createdAt").defaultNow(),
   updatedAt: timestamp("updatedAt").defaultNow(),
 });
+
+
+
+/**
+ * Message Channels - Group chat channels for events
+ */
+export const messageChannels = mysqlTable("messageChannels", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  eventId: varchar("eventId", { length: 64 }).notNull(),
+  name: varchar("name", { length: 255 }).notNull(),
+  description: text("description"),
+  isPrivate: boolean("isPrivate").default(false),
+  createdBy: varchar("createdBy", { length: 64 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow(),
+});
+
+export type MessageChannel = typeof messageChannels.$inferSelect;
+export type InsertMessageChannel = typeof messageChannels.$inferInsert;
+
+/**
+ * Messages - Chat messages in channels
+ */
+export const messages = mysqlTable("messages", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  channelId: varchar("channelId", { length: 64 }).notNull(),
+  senderId: varchar("senderId", { length: 64 }).notNull(),
+  senderName: varchar("senderName", { length: 255 }).notNull(),
+  content: text("content").notNull(),
+  attachmentUrl: varchar("attachmentUrl", { length: 1024 }),
+  createdAt: timestamp("createdAt").defaultNow(),
+});
+
+export type Message = typeof messages.$inferSelect;
+export type InsertMessage = typeof messages.$inferInsert;
+

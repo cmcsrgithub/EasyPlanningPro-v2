@@ -51,11 +51,11 @@ Modern rebuild of EasyPlanningPro with Apple-inspired design system, built with 
 - ✅ Task assignment and due dates
 - ✅ Task statistics dashboard
 - ✅ Financial reporting schema (expenses, budgets)
+- ✅ Financial reporting UI (dashboard, charts, CSV export)
 - ✅ Up to 5 administrator accounts
 - ❌ Private group messaging (NOT BUILT)
 - ❌ Multi-event itinerary & ticketing (NOT BUILT)
 - ❌ Custom subdomain branding (NOT BUILT)
-- ❌ Financial reporting UI (NOT BUILT)
 
 ### Business Tier Features (Not Started) ❌
 - ❌ Customizable registration forms
@@ -81,7 +81,7 @@ Modern rebuild of EasyPlanningPro with Apple-inspired design system, built with 
 |------|------------------|--------|
 | **Basic (Free)** | 9/9 (100%) | ✅ Production Ready |
 | **Premium ($19.99/mo)** | 8/8 (100%) | ✅ Production Ready |
-| **Pro ($59.99/mo)** | 3/7 (43%) | ⚠️ Partial |
+| **Pro ($59.99/mo)** | 4/7 (57%) | ⚠️ Partial |
 | **Business ($129.99/mo)** | 0/6 (0%) | ❌ Not Started |
 | **Enterprise** | Custom | N/A |
 

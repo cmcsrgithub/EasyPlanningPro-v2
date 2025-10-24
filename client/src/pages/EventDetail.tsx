@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import DashboardLayout from "@/components/DashboardLayout";
 import { trpc } from "@/lib/trpc";
-import { Calendar, MapPin, Users, Clock, Edit, Trash2, ArrowLeft } from "lucide-react";
+import { Calendar, MapPin, Users, Clock, Edit, Trash2, ArrowLeft, ListTodo, DollarSign, MessageSquare } from "lucide-react";
 import { useLocation, useRoute } from "wouter";
 import { toast } from "sonner";
 
@@ -84,6 +84,18 @@ export default function EventDetail() {
             </div>
           </div>
           <div className="flex items-center gap-2">
+            <Button variant="outline" onClick={() => setLocation(`/events/${eventId}/tasks`)}>
+              <ListTodo className="mr-2 h-4 w-4" />
+              Tasks
+            </Button>
+            <Button variant="outline" onClick={() => setLocation(`/events/${eventId}/financial`)}>
+              <DollarSign className="mr-2 h-4 w-4" />
+              Financial
+            </Button>
+            <Button variant="outline" onClick={() => setLocation(`/events/${eventId}/messaging`)}>
+              <MessageSquare className="mr-2 h-4 w-4" />
+              Chat
+            </Button>
             <Button variant="outline" onClick={() => setLocation(`/events/${eventId}/edit`)}>
               <Edit className="mr-2 h-4 w-4" />
               Edit

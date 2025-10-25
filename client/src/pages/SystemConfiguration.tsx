@@ -78,7 +78,7 @@ export default function SystemConfiguration() {
 
   const handleSaveSettings = (category: string) => {
     // TODO: Call API to save settings
-    console.log("Saving settings for category:", category);
+    // Submit settings to API
   };
 
   const handleChange = (key: string, value: any) => {

@@ -157,7 +157,7 @@ export default function ContentModeration() {
 
   const handleReviewContent = () => {
     // TODO: Call API to review content
-    console.log("Reviewing content:", selectedContent?.id, "Action:", reviewAction, "Notes:", reviewNotes);
+    // Submit review action to API
     setShowReviewDialog(false);
     setSelectedContent(null);
     setReviewNotes("");

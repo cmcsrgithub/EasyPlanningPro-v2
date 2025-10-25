@@ -53,6 +53,10 @@ import TravelPlanner from "./pages/TravelPlanner";
 import Forum from "./pages/Forum";
 import SupportTickets from "./pages/SupportTickets";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminUsers from "./pages/AdminUsers";
+import SystemMonitoring from "./pages/SystemMonitoring";
+import ContentModeration from "./pages/ContentModeration";
+import SystemConfiguration from "./pages/SystemConfiguration";
 import EmailMarketing from "./pages/EmailMarketing";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
@@ -140,6 +144,10 @@ function Router() {
       <Route path={"/forum"} component={Forum} />
       <Route path={"/tickets"} component={SupportTickets} />
       <Route path={"/admin"} component={AdminDashboard} />
+      <Route path={"/admin/users"} component={AdminUsers} />
+      <Route path={"/admin/monitoring"} component={SystemMonitoring} />
+      <Route path={"/admin/moderation"} component={ContentModeration} />
+      <Route path={"/admin/configuration"} component={SystemConfiguration} />
       <Route path={"/email-marketing"} component={EmailMarketing} />
       <Route path={"/privacy"} component={PrivacyPolicy} />
       <Route path={"/terms"} component={TermsOfService} />

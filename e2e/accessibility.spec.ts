@@ -5,7 +5,7 @@ test.describe('Accessibility Tests (WCAG 2.1 AA)', () => {
     await page.goto('/');
   });
 
-  describe('Keyboard Navigation', () => {
+  test.describe('Keyboard Navigation', () => {
     test('should navigate through main menu using Tab key', async ({ page }) => {
       await page.goto('/dashboard');
       
@@ -98,7 +98,7 @@ test.describe('Accessibility Tests (WCAG 2.1 AA)', () => {
     });
   });
 
-  describe('Screen Reader Support', () => {
+  test.describe('Screen Reader Support', () => {
     test('should have proper ARIA labels on interactive elements', async ({ page }) => {
       await page.goto('/events');
       
@@ -173,7 +173,7 @@ test.describe('Accessibility Tests (WCAG 2.1 AA)', () => {
     });
   });
 
-  describe('Color Contrast (WCAG AA)', () => {
+  test.describe('Color Contrast (WCAG AA)', () => {
     test('should have sufficient contrast for text', async ({ page }) => {
       await page.goto('/dashboard');
       
@@ -230,7 +230,7 @@ test.describe('Accessibility Tests (WCAG 2.1 AA)', () => {
     });
   });
 
-  describe('Form Accessibility', () => {
+  test.describe('Form Accessibility', () => {
     test('should have descriptive error messages', async ({ page }) => {
       await page.goto('/events');
       await page.click('[data-testid="create-event-btn"]');
@@ -276,7 +276,7 @@ test.describe('Accessibility Tests (WCAG 2.1 AA)', () => {
     });
   });
 
-  describe('Responsive and Zoom', () => {
+  test.describe('Responsive and Zoom', () => {
     test('should be usable at 200% zoom', async ({ page }) => {
       await page.goto('/dashboard');
       
@@ -316,7 +316,7 @@ test.describe('Accessibility Tests (WCAG 2.1 AA)', () => {
     });
   });
 
-  describe('Semantic HTML', () => {
+  test.describe('Semantic HTML', () => {
     test('should use semantic landmarks', async ({ page }) => {
       await page.goto('/dashboard');
       

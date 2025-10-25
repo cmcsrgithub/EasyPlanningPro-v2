@@ -210,3 +210,12 @@
 - ✅ Database integrity ensured
 - ✅ CI/CD ready
 
+
+
+## Critical Bug - Railway Deployment
+
+- [x] Fix Railway build crash: ReferenceError: decimal is not defined in drizzle/schema.ts
+  - Added .node-version file (22.13.0)
+  - Added nixpacks.toml configuration
+  - Changes committed locally (need to push to GitHub)
+

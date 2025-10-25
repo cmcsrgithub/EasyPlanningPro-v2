@@ -24,6 +24,30 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Vendor chunks for better caching
+          'react-vendor': ['react', 'react-dom', 'react/jsx-runtime'],
+          'router': ['wouter'],
+          'ui-vendor': ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-select', '@radix-ui/react-tabs'],
+          'form-vendor': ['react-hook-form', 'zod'],
+          'trpc': ['@trpc/client', '@trpc/react-query'],
+          'query': ['@tanstack/react-query'],
+          'utils': ['clsx', 'tailwind-merge', 'date-fns'],
+        },
+      },
+    },
+    // Performance optimizations
+    chunkSizeWarningLimit: 1000,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
+    sourcemap: false,
   },
   server: {
     host: true,

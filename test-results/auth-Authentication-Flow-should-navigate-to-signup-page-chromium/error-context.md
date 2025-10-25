@@ -1,0 +1,56 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - region "Notifications alt+T"
+  - link "Skip to main content" [ref=e3] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e5]:
+    - generic [ref=e6]:
+      - img [ref=e9]
+      - generic [ref=e12]: Create Account
+      - generic [ref=e13]: Get started with EasyPlanningPro today
+    - generic [ref=e14]:
+      - generic [ref=e15]:
+        - generic [ref=e16]:
+          - generic [ref=e17]: Full Name
+          - generic [ref=e18]:
+            - img [ref=e19]
+            - textbox "Full Name" [ref=e22]:
+              - /placeholder: John Doe
+        - generic [ref=e23]:
+          - generic [ref=e24]: Email
+          - generic [ref=e25]:
+            - img [ref=e26]
+            - textbox "Email" [ref=e29]:
+              - /placeholder: you@example.com
+        - generic [ref=e30]:
+          - generic [ref=e31]: Password
+          - generic [ref=e32]:
+            - img [ref=e33]
+            - textbox "Password" [ref=e36]:
+              - /placeholder: ••••••••
+          - paragraph [ref=e37]: Must be at least 8 characters
+        - generic [ref=e38]:
+          - generic [ref=e39]: Confirm Password
+          - generic [ref=e40]:
+            - img [ref=e41]
+            - textbox "Confirm Password" [ref=e44]:
+              - /placeholder: ••••••••
+        - generic [ref=e45]:
+          - checkbox "I agree to the Terms of Service and Privacy Policy" [ref=e46] [cursor=pointer]
+          - generic [ref=e47] [cursor=pointer]:
+            - text: I agree to the
+            - button "Terms of Service" [ref=e48]
+            - text: and
+            - button "Privacy Policy" [ref=e49]
+      - generic [ref=e50]:
+        - generic [ref=e55]: Or continue with
+        - button "Continue with Facebook" [ref=e56] [cursor=pointer]:
+          - img
+          - text: Continue with Facebook
+        - button "Create Account" [ref=e57] [cursor=pointer]
+        - generic [ref=e58]:
+          - text: Already have an account?
+          - button "Sign in" [ref=e59] [cursor=pointer]
+```

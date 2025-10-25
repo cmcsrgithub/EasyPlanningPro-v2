@@ -1,0 +1,453 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - region "Notifications alt+T"
+  - link "Skip to main content" [ref=e3] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e4]:
+    - banner [ref=e5]:
+      - generic [ref=e6]:
+        - img "EasyPlanningPro" [ref=e8]
+        - navigation [ref=e9]:
+          - link "Features" [ref=e10] [cursor=pointer]:
+            - /url: "#features"
+          - link "Pricing" [ref=e11] [cursor=pointer]:
+            - /url: "#pricing"
+          - link "About" [ref=e12] [cursor=pointer]:
+            - /url: "#about"
+          - link "Contact Us" [ref=e13] [cursor=pointer]:
+            - /url: "#contact"
+        - generic [ref=e14]:
+          - button "Sign In" [ref=e15] [cursor=pointer]
+          - button "Sign Up" [ref=e16] [cursor=pointer]
+    - generic [ref=e19]:
+      - heading "Event Planning, Made Easy" [level=1] [ref=e20]
+      - paragraph [ref=e21]: Less stress. More Success. Start Planning Today!
+      - button "Get Started" [ref=e22] [cursor=pointer]
+    - generic [ref=e24]:
+      - generic [ref=e25]:
+        - heading "Free Features" [level=2] [ref=e26]
+        - paragraph [ref=e27]: These core features are available for free to help you get started with event planning
+      - generic [ref=e28]:
+        - generic [ref=e29]:
+          - generic [ref=e30]:
+            - img [ref=e32]
+            - generic [ref=e34]: Events
+          - generic [ref=e36]: Create and manage events with detailed scheduling and organization tools.
+        - generic [ref=e37]:
+          - generic [ref=e38]:
+            - img [ref=e40]
+            - generic [ref=e43]: Event Management
+          - generic [ref=e45]: Send invitations and manage event logistics with a powerful suite of tools.
+        - generic [ref=e46]:
+          - generic [ref=e47]:
+            - img [ref=e49]
+            - generic [ref=e52]: Venue Management
+          - generic [ref=e54]: Find and coordinate venues, accommodations, and location details.
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - img [ref=e58]
+            - generic [ref=e63]: Guest Management
+          - generic [ref=e65]: Invite guests, track RSVPs, and manage attendee information effortlessly.
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - img [ref=e69]
+            - generic [ref=e72]: Event Attendee / Day
+          - generic [ref=e74]: Track attendance with a detailed list of who attended each day of your event.
+      - button "Get Started for Free" [ref=e76] [cursor=pointer]
+    - generic [ref=e78]:
+      - generic [ref=e79]:
+        - heading "PREMIUM Premium Features" [level=2] [ref=e80]:
+          - generic [ref=e81]:
+            - generic [ref=e82]: PREMIUM
+            - text: Premium Features
+        - paragraph [ref=e83]: Unlock these powerful features with our Premium plan to take your events to the next level
+      - generic [ref=e84]:
+        - generic [ref=e85]:
+          - generic [ref=e86]:
+            - generic [ref=e88]: PREMIUM
+            - img [ref=e90]
+            - generic [ref=e92]: Everything in Basic
+          - generic [ref=e94]: All features from the Basic plan plus advanced capabilities.
+        - generic [ref=e95]:
+          - generic [ref=e96]:
+            - generic [ref=e98]: PREMIUM
+            - img [ref=e100]
+            - generic [ref=e104]: Forms
+          - generic [ref=e106]: Create custom forms for registration, surveys, and data collection.
+        - generic [ref=e107]:
+          - generic [ref=e108]:
+            - generic [ref=e110]: PREMIUM
+            - img [ref=e112]
+            - generic [ref=e115]: Online Galleries
+          - generic [ref=e117]: Share event photos and memories with beautiful online galleries.
+        - generic [ref=e118]:
+          - generic [ref=e119]:
+            - generic [ref=e121]: PREMIUM
+            - img [ref=e123]
+            - generic [ref=e126]: Email Automation
+          - generic [ref=e128]: Automate email communications and reminders for your events.
+        - generic [ref=e129]:
+          - generic [ref=e130]:
+            - generic [ref=e132]: PREMIUM
+            - img [ref=e134]
+            - generic [ref=e136]: Custom Integration
+          - generic [ref=e138]: Integrate with your favorite tools and services seamlessly.
+        - generic [ref=e139]:
+          - generic [ref=e140]:
+            - generic [ref=e142]: PREMIUM
+            - img [ref=e144]
+            - generic [ref=e146]: Track & Automate Accounts
+          - generic [ref=e148]: Automate account management and track user engagement.
+    - generic [ref=e150]:
+      - generic [ref=e151]:
+        - heading "PRO Pro Features" [level=2] [ref=e152]:
+          - generic [ref=e153]:
+            - generic [ref=e154]: PRO
+            - text: Pro Features
+        - paragraph [ref=e155]: Unlock the full potential of event planning with our Pro subscription where you'll have access
+      - generic [ref=e156]:
+        - generic [ref=e157]:
+          - generic [ref=e158]:
+            - generic [ref=e160]: PRO
+            - img [ref=e162]
+            - generic [ref=e164]: Everything in Premium
+          - generic [ref=e166]: All Premium features plus professional-grade tools.
+        - generic [ref=e167]:
+          - generic [ref=e168]:
+            - generic [ref=e170]: PRO
+            - img [ref=e172]
+            - generic [ref=e175]: 5 Emails
+          - generic [ref=e177]: Send up to 5 custom branded emails per month.
+        - generic [ref=e178]:
+          - generic [ref=e179]:
+            - generic [ref=e181]: PRO
+            - img [ref=e183]
+            - generic [ref=e186]: Easy Networking
+          - generic [ref=e188]: Connect attendees with built-in networking features.
+        - generic [ref=e189]:
+          - generic [ref=e190]:
+            - generic [ref=e192]: PRO
+            - img [ref=e194]
+            - generic [ref=e196]: Advanced User Management
+          - generic [ref=e198]: Manage users with advanced permissions and roles.
+        - generic [ref=e199]:
+          - generic [ref=e200]:
+            - generic [ref=e202]: PRO
+            - img [ref=e204]
+            - generic [ref=e207]: Custom Forms
+          - generic [ref=e209]: Create unlimited custom forms with advanced logic.
+        - generic [ref=e210]:
+          - generic [ref=e211]:
+            - generic [ref=e213]: PRO
+            - img [ref=e215]
+            - generic [ref=e217]: Custom Content & Activities
+          - generic [ref=e219]: Build custom content and activities for your events.
+        - generic [ref=e220]:
+          - generic [ref=e221]:
+            - generic [ref=e223]: PRO
+            - img [ref=e225]
+            - generic [ref=e229]: Detailed Reports (Non-CPA)
+          - generic [ref=e231]: Generate comprehensive reports and analytics.
+        - generic [ref=e232]:
+          - generic [ref=e233]:
+            - generic [ref=e235]: PRO
+            - img [ref=e237]
+            - generic [ref=e240]: Sync to 3 Attendance Accounts
+          - generic [ref=e242]: Sync attendance data across multiple accounts.
+        - generic [ref=e243]:
+          - generic [ref=e244]:
+            - generic [ref=e246]: PRO
+            - img [ref=e248]
+            - generic [ref=e260]: Event Coordinator Accounts
+          - generic [ref=e262]: Add dedicated coordinator accounts for team management.
+    - generic [ref=e264]:
+      - generic [ref=e265]:
+        - heading "BUSINESS Business Features" [level=2] [ref=e266]:
+          - generic [ref=e267]:
+            - generic [ref=e268]: BUSINESS
+            - text: Business Features
+        - paragraph [ref=e269]: Enterprise-grade features for large organizations and professional event planners
+      - generic [ref=e270]:
+        - generic [ref=e271]:
+          - generic [ref=e272]:
+            - generic [ref=e274]: BUSINESS
+            - img [ref=e276]
+            - generic [ref=e278]: Everything in Pro
+          - generic [ref=e280]: All Pro features plus enterprise capabilities.
+        - generic [ref=e281]:
+          - generic [ref=e282]:
+            - generic [ref=e284]: BUSINESS
+            - img [ref=e286]
+            - generic [ref=e289]: 10+ Emails
+          - generic [ref=e291]: Send unlimited branded emails to your attendees.
+        - generic [ref=e292]:
+          - generic [ref=e293]:
+            - generic [ref=e295]: BUSINESS
+            - img [ref=e297]
+            - generic [ref=e299]: Advanced User Management
+          - generic [ref=e301]: Enterprise-grade user management and security.
+        - generic [ref=e302]:
+          - generic [ref=e303]:
+            - generic [ref=e305]: BUSINESS
+            - img [ref=e307]
+            - generic [ref=e310]: Unlimited Forms & Surveys
+          - generic [ref=e312]: Create unlimited forms with advanced features.
+        - generic [ref=e313]:
+          - generic [ref=e314]:
+            - generic [ref=e316]: BUSINESS
+            - img [ref=e318]
+            - generic [ref=e320]: Advanced Event Analytics
+          - generic [ref=e322]: Deep insights into event performance and engagement.
+        - generic [ref=e323]:
+          - generic [ref=e324]:
+            - generic [ref=e326]: BUSINESS
+            - img [ref=e328]
+            - generic [ref=e332]: API for Automation
+          - generic [ref=e334]: Full API access for custom integrations and automation.
+    - generic [ref=e336]:
+      - generic [ref=e337]:
+        - heading "Choose Your Plan" [level=2] [ref=e338]
+        - paragraph [ref=e339]: We offer flexible pricing to fit your event needs and budget
+        - button "Get Started With a Free 30-Day Trial" [ref=e340] [cursor=pointer]
+      - generic [ref=e341]:
+        - generic [ref=e342]:
+          - generic [ref=e343]:
+            - generic [ref=e344]: Basic
+            - generic [ref=e345]: Free
+            - generic [ref=e346]: Perfect for small events
+          - generic [ref=e347]:
+            - list [ref=e348]:
+              - listitem [ref=e349]:
+                - img [ref=e350]
+                - generic [ref=e353]: Events
+              - listitem [ref=e354]:
+                - img [ref=e355]
+                - generic [ref=e358]: Venues
+              - listitem [ref=e359]:
+                - img [ref=e360]
+                - generic [ref=e363]: Galleries
+              - listitem [ref=e364]:
+                - img [ref=e365]
+                - generic [ref=e368]: Email Support
+              - listitem [ref=e369]:
+                - img [ref=e370]
+                - generic [ref=e373]: Mobile Access
+              - listitem [ref=e374]:
+                - img [ref=e375]
+                - generic [ref=e378]: Event Templates
+              - listitem [ref=e379]:
+                - img [ref=e380]
+                - generic [ref=e383]: RSVP Tracking
+              - listitem [ref=e384]:
+                - img [ref=e385]
+                - generic [ref=e388]: Basic Reporting
+              - listitem [ref=e389]:
+                - img [ref=e390]
+                - generic [ref=e393]: Member Directory
+            - button "Get Started" [ref=e394] [cursor=pointer]
+        - generic [ref=e395]:
+          - generic [ref=e396]:
+            - generic [ref=e397]: Premium
+            - generic [ref=e398]: $19.99/month
+            - generic [ref=e399]: For growing organizations
+          - generic [ref=e400]:
+            - list [ref=e401]:
+              - listitem [ref=e402]:
+                - img [ref=e403]
+                - generic [ref=e406]: Everything in Basic
+              - listitem [ref=e407]:
+                - img [ref=e408]
+                - generic [ref=e411]: Custom Forms
+              - listitem [ref=e412]:
+                - img [ref=e413]
+                - generic [ref=e416]: Online Galleries
+              - listitem [ref=e417]:
+                - img [ref=e418]
+                - generic [ref=e421]: Email Automation
+              - listitem [ref=e422]:
+                - img [ref=e423]
+                - generic [ref=e426]: Custom Integration
+              - listitem [ref=e427]:
+                - img [ref=e428]
+                - generic [ref=e431]: Track & Automate Accounts
+              - listitem [ref=e432]:
+                - img [ref=e433]
+                - generic [ref=e436]: Priority Support
+              - listitem [ref=e437]:
+                - img [ref=e438]
+                - generic [ref=e441]: Advanced Reporting
+              - listitem [ref=e442]:
+                - img [ref=e443]
+                - generic [ref=e446]: Custom Branding
+              - listitem [ref=e447]:
+                - img [ref=e448]
+                - generic [ref=e451]: Up to 200 attendees
+              - listitem [ref=e452]:
+                - img [ref=e453]
+                - generic [ref=e456]: Photo Albums
+              - listitem [ref=e457]:
+                - img [ref=e458]
+                - generic [ref=e461]: Event Analytics
+            - button "Start Free Trial" [ref=e462] [cursor=pointer]
+        - generic [ref=e463]:
+          - generic [ref=e464]:
+            - generic [ref=e465]: Pro
+            - generic [ref=e466]: $59.99/month
+            - generic [ref=e467]: For professional planners
+          - generic [ref=e468]:
+            - list [ref=e469]:
+              - listitem [ref=e470]:
+                - img [ref=e471]
+                - generic [ref=e474]: Everything in Premium
+              - listitem [ref=e475]:
+                - img [ref=e476]
+                - generic [ref=e479]: 5 Emails
+              - listitem [ref=e480]:
+                - img [ref=e481]
+                - generic [ref=e484]: Easy Networking
+              - listitem [ref=e485]:
+                - img [ref=e486]
+                - generic [ref=e489]: Advanced User Management
+              - listitem [ref=e490]:
+                - img [ref=e491]
+                - generic [ref=e494]: Custom Forms
+              - listitem [ref=e495]:
+                - img [ref=e496]
+                - generic [ref=e499]: Custom Content & Activities
+              - listitem [ref=e500]:
+                - img [ref=e501]
+                - generic [ref=e504]: Detailed Reports (Non-CPA)
+              - listitem [ref=e505]:
+                - img [ref=e506]
+                - generic [ref=e509]: Sync to 3 Attendance Accounts
+              - listitem [ref=e510]:
+                - img [ref=e511]
+                - generic [ref=e514]: Event Coordinator Accounts
+              - listitem [ref=e515]:
+                - img [ref=e516]
+                - generic [ref=e519]: Up to 500 attendees
+              - listitem [ref=e520]:
+                - img [ref=e521]
+                - generic [ref=e524]: Dedicated Support
+              - listitem [ref=e525]:
+                - img [ref=e526]
+                - generic [ref=e529]: API Access (Limited)
+            - button "Start Free Trial" [ref=e530] [cursor=pointer]
+        - generic [ref=e531]:
+          - generic [ref=e532]:
+            - generic [ref=e533]: Business
+            - generic [ref=e534]: $129.99/month
+            - generic [ref=e535]: For large organizations
+          - generic [ref=e536]:
+            - list [ref=e537]:
+              - listitem [ref=e538]:
+                - img [ref=e539]
+                - generic [ref=e542]: Everything in Pro
+              - listitem [ref=e543]:
+                - img [ref=e544]
+                - generic [ref=e547]: 10+ Emails
+              - listitem [ref=e548]:
+                - img [ref=e549]
+                - generic [ref=e552]: Advanced User Management
+              - listitem [ref=e553]:
+                - img [ref=e554]
+                - generic [ref=e557]: Unlimited Forms & Surveys
+              - listitem [ref=e558]:
+                - img [ref=e559]
+                - generic [ref=e562]: Advanced Event Analytics
+              - listitem [ref=e563]:
+                - img [ref=e564]
+                - generic [ref=e567]: API for Automation
+              - listitem [ref=e568]:
+                - img [ref=e569]
+                - generic [ref=e572]: Unlimited attendees
+              - listitem [ref=e573]:
+                - img [ref=e574]
+                - generic [ref=e577]: White-label Options
+              - listitem [ref=e578]:
+                - img [ref=e579]
+                - generic [ref=e582]: Custom Integrations
+              - listitem [ref=e583]:
+                - img [ref=e584]
+                - generic [ref=e587]: Dedicated Account Manager
+              - listitem [ref=e588]:
+                - img [ref=e589]
+                - generic [ref=e592]: SLA Guarantee
+              - listitem [ref=e593]:
+                - img [ref=e594]
+                - generic [ref=e597]: Priority Phone Support
+            - button "Start Free Trial" [ref=e598] [cursor=pointer]
+        - generic [ref=e599]:
+          - generic [ref=e600]:
+            - generic [ref=e601]: Enterprise
+            - generic [ref=e602]: Contact Us
+            - generic [ref=e603]: Custom solutions
+          - generic [ref=e604]:
+            - list [ref=e605]:
+              - listitem [ref=e606]:
+                - img [ref=e607]
+                - generic [ref=e610]: Custom Pricing
+              - listitem [ref=e611]:
+                - img [ref=e612]
+                - generic [ref=e615]: Dedicated Account Manager
+              - listitem [ref=e616]:
+                - img [ref=e617]
+                - generic [ref=e620]: Custom Development
+              - listitem [ref=e621]:
+                - img [ref=e622]
+                - generic [ref=e625]: On-premise Options
+              - listitem [ref=e626]:
+                - img [ref=e627]
+                - generic [ref=e630]: Training & Onboarding
+              - listitem [ref=e631]:
+                - img [ref=e632]
+                - generic [ref=e635]: 24/7 Phone Support
+              - listitem [ref=e636]:
+                - img [ref=e637]
+                - generic [ref=e640]: Custom SLA
+              - listitem [ref=e641]:
+                - img [ref=e642]
+                - generic [ref=e645]: Security Review
+            - button "Contact Sales" [ref=e646] [cursor=pointer]
+      - button "Get Started With a Free Trial" [ref=e648] [cursor=pointer]
+    - generic [ref=e651]:
+      - heading "Ready to Plan Your Perfect Gathering?" [level=2] [ref=e652]
+      - paragraph [ref=e653]: Join thousands of successful event planners. Start your free trial today!
+      - button "Get Started Now" [ref=e654] [cursor=pointer]
+    - contentinfo [ref=e655]:
+      - generic [ref=e656]:
+        - generic [ref=e657]:
+          - generic [ref=e658]:
+            - heading "EasyPlanningPro" [level=3] [ref=e659]
+            - paragraph [ref=e660]: The modern way to plan and manage events.
+          - generic [ref=e661]:
+            - heading "Product" [level=3] [ref=e662]
+            - list [ref=e663]:
+              - listitem [ref=e664]:
+                - link "Features" [ref=e665] [cursor=pointer]:
+                  - /url: "#features"
+              - listitem [ref=e666]:
+                - link "Pricing" [ref=e667] [cursor=pointer]:
+                  - /url: "#pricing"
+          - generic [ref=e668]:
+            - heading "Company" [level=3] [ref=e669]
+            - list [ref=e670]:
+              - listitem [ref=e671]:
+                - link "About" [ref=e672] [cursor=pointer]:
+                  - /url: "#about"
+              - listitem [ref=e673]:
+                - link "Contact" [ref=e674] [cursor=pointer]:
+                  - /url: "#contact"
+          - generic [ref=e675]:
+            - heading "Legal" [level=3] [ref=e676]
+            - list [ref=e677]:
+              - listitem [ref=e678]:
+                - link "Privacy" [ref=e679] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e680]:
+                - link "Terms" [ref=e681] [cursor=pointer]:
+                  - /url: "#"
+        - paragraph [ref=e683]: © 2025 EasyPlanningPro. All rights reserved.
+```

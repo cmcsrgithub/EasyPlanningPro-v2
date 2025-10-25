@@ -1,0 +1,42 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - img [ref=e6]
+    - generic [ref=e40]:
+      - generic [ref=e41]:
+        - generic:
+          - heading [level=1]
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - generic [ref=e47]:
+            - img [ref=e49]
+            - generic [ref=e50]: Sign up to EasyPlanningPro
+          - generic [ref=e52]:
+            - generic [ref=e53]:
+              - button "Continue with Google" [ref=e54] [cursor=pointer]:
+                - img [ref=e56]
+                - generic [ref=e61]: Continue with Google
+              - button "Continue with Microsoft" [ref=e62] [cursor=pointer]:
+                - img [ref=e64]
+                - generic [ref=e69]: Continue with Microsoft
+              - button "Continue with Apple" [ref=e70] [cursor=pointer]:
+                - img [ref=e72]
+                - generic [ref=e74]: Continue with Apple
+            - generic [ref=e75]: Or
+            - generic [ref=e76]:
+              - textbox "Enter your email address" [active] [ref=e78]
+              - button "Continue" [disabled] [ref=e83]:
+                - generic [ref=e84]: Continue
+        - generic [ref=e85]:
+          - img [ref=e86]
+          - text: Powered by Manus
+    - generic [ref=e93]:
+      - link "Terms of Service" [ref=e94] [cursor=pointer]:
+        - /url: /terms
+      - link "Privacy Policy" [ref=e95] [cursor=pointer]:
+        - /url: /privacy
+  - list
+  - alert [ref=e96]
+```

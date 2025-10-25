@@ -112,7 +112,6 @@ export default function AdminUsers() {
 
   const handleAssignRole = () => {
     // TODO: Call API to assign role
-    console.log("Assigning role:", newRole, "to user:", selectedUser?.id);
     setShowRoleDialog(false);
     setSelectedUser(null);
     setNewRole("");
@@ -120,7 +119,6 @@ export default function AdminUsers() {
 
   const handleSuspendUser = () => {
     // TODO: Call API to suspend user
-    console.log("Suspending user:", selectedUser?.id, "for", suspensionDuration, "days");
     setShowSuspendDialog(false);
     setSelectedUser(null);
     setSuspensionReason("");
@@ -129,7 +127,6 @@ export default function AdminUsers() {
 
   const handleUnsuspendUser = (userId: number) => {
     // TODO: Call API to unsuspend user
-    console.log("Unsuspending user:", userId);
   };
 
   return (

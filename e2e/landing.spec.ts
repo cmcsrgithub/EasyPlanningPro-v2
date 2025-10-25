@@ -14,7 +14,8 @@ test.describe('Landing Page', () => {
 
   test('should have CTA buttons', async ({ page }) => {
     await page.goto('/');
-    const getStartedButton = page.getByRole('button', { name: /get started/i });
+    // Multiple 'Get Started' buttons exist, check the first one
+    const getStartedButton = page.getByRole('button', { name: /get started/i }).first();
     await expect(getStartedButton).toBeVisible();
   });
 });

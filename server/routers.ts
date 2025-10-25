@@ -26,6 +26,7 @@ import { travelRouter } from "./routers/travel";
 import { forumRouter } from "./routers/forum";
 import { ticketsRouter } from "./routers/tickets";
 import { templateCustomizationRouter } from "./routers/templateCustomization";
+import { adminRouter } from "./routers/admin";
 
 export const appRouter = router({
   system: systemRouter,
@@ -65,6 +66,7 @@ export const appRouter = router({
   forum: forumRouter,
   tickets: ticketsRouter,
   templateCustomization: templateCustomizationRouter,
+  admin: adminRouter,
 });
 
 export type AppRouter = typeof appRouter;
